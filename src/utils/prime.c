@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 18:45:11 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/28 19:51:58 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/28 20:02:13 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int is_prime(const int x)
 		return (0);
 	i = 3;
 	ft_putendl("here");
-	while (i < floor(sqroot((double)x)))
+	while (i < ft_floor(ft_sqroot((double)x)))
 	{
 		ft_putendl("inside");
 		if ((x % i) == 0)

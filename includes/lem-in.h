@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/28 19:44:31 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/28 20:02:13 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ void error(void);
 t_h_table *ht_new(void);
 void ht_del_hash_table(t_h_table *ht);
 long int x_to_the_n (int x,int n);
-double sqroot(double square);
-double floor(double x);
+double ft_sqroot(double square);
+double ft_floor(double x);
 int is_prime(const int x);
 int next_prime(int x);
 

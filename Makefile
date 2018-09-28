@@ -6,7 +6,7 @@
 #    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/09/28 19:44:40 by pbie             ###   ########.fr        #
+#    Updated: 2018/09/28 20:02:13 by pbie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ CFLAGS = -g -I includes
 SRC = main.c \
 		src/hash/hash.c \
 		src/utils/errors.c \
-		src/utils/floor.c \
+		src/utils/ft_floor.c \
 		src/utils/prime.c \
-		src/utils/sqroot.c \
+		src/utils/ft_sqroot.c \
 		src/utils/x_to_the_n.c
 
 

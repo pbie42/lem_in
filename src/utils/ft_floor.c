@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sqroot.c                                           :+:      :+:    :+:   */
+/*   ft_floor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/28 19:05:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/28 19:15:56 by pbie             ###   ########.fr       */
+/*   Created: 2018/09/28 19:23:58 by pbie              #+#    #+#             */
+/*   Updated: 2018/09/28 19:33:41 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-double sqroot(double square)
+double ft_floor(double x)
 {
-	double root;
-	double last;
-	double diff;
-
-	root = square / 3;
-	diff = 1;
-	if (square <= 0) return 0;
-	last = root;
-	root = (root + square / root) / 2;
-	diff = root - last;
-	while (diff > MINDIFF || diff < -MINDIFF)
-	{
-		last = root;
-		root = (root + square / root) / 2;
-		diff = root - last;
-	}
-	return root;
+	if (x > 0)
+		return ((int)x);
+	return ((int)(x-0.9999999999999999));
 }
