@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/28 20:02:13 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/28 21:13:36 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define HT_PRIME_1 151
 # define HT_PRIME_2 163
 # define MINDIFF 2.25e-308
+# define HT_INITIAL_BASE_SIZE 53
 
 # include <sys/wait.h>
 # include <sys/ioctl.h>
@@ -78,6 +79,7 @@ typedef struct		s_h_item
 typedef struct		s_h_table
 {
 	int				size;
+	int				base_size;
 	int				count;
 	t_h_item			**items;
 }						t_h_table;
@@ -93,7 +95,17 @@ typedef struct		s_parse
 
 void error(void);
 t_h_table *ht_new(void);
+t_h_item *ht_new_item(const char *k, const char *v);
+void ht_del_item(t_h_item *i);
 void ht_del_hash_table(t_h_table *ht);
+int ht_hash(const char *s, const int a, const int m);
+int ht_get_hash(const char *s, const int buckets, const int attempt);
+void ht_insert(t_h_table *ht, const char *key, const char *value);
+char *ht_search(t_h_table *ht, const char *key);
+t_h_table *ht_new_sized(const int base_size);
+t_h_table *ht_new(void);
+void ht_resize(t_h_table *ht, const int base_size);
+void ht_resize_up(t_h_table* ht);
 long int x_to_the_n (int x,int n);
 double ft_sqroot(double square);
 double ft_floor(double x);
