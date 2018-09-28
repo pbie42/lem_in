@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/27 15:37:47 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/28 19:44:31 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@
 # define INVCYAN "\033[7;36m"
 # define INVRED "\033[7;31m"
 # define INVMAGENTA "\033[7;35m"
+# define HT_PRIME_1 151
+# define HT_PRIME_2 163
+# define MINDIFF 2.25e-308
 
 # include <sys/wait.h>
 # include <sys/ioctl.h>
@@ -61,17 +64,40 @@
 # include <signal.h>
 # include <termios.h>
 # include <err.h>
+# include <math.h>
 # include "../libft/includes/libftprintf.h"
 
 typedef int			t_bool;
 
-typedef struct		s_plateau
+typedef struct		s_h_item
 {
-	int				x;
-	int				y;
-	char			**board;
-}					t_plateau;
+	char				*key;
+	char				*value;
+}						t_h_item;
 
-void					error(void);
+typedef struct		s_h_table
+{
+	int				size;
+	int				count;
+	t_h_item			**items;
+}						t_h_table;
+
+typedef struct		s_parse
+{
+	t_bool				start;
+	t_bool				end;
+	char					*line;
+	struct s_parse		*next;
+	
+}					t_parse;
+
+void error(void);
+t_h_table *ht_new(void);
+void ht_del_hash_table(t_h_table *ht);
+long int x_to_the_n (int x,int n);
+double sqroot(double square);
+double floor(double x);
+int is_prime(const int x);
+int next_prime(int x);
 
 #endif
