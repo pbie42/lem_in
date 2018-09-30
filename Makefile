@@ -6,7 +6,7 @@
 #    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/09/30 14:56:46 by pbie             ###   ########.fr        #
+#    Updated: 2018/09/30 19:03:01 by pbie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC = main.c \
 		src/hash_table/ht_hash.c \
 		src/hash_table/ht_new.c \
 		src/hash_table/ht_resize.c \
+		src/parser/ants.c \
+		src/parser/parse.c \
 		src/utils/errors.c \
 		src/utils/ft_floor.c \
 		src/utils/ft_prime.c \

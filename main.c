@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 17:34:41 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 18:59:42 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,11 @@
 
 int main(void)
 {
-	char *line;
-	int lines;
+	t_data *data;
 	t_h_table *ht;
 
-	lines = 0;
-	while (ft_get_next_line(0, &line) == 1)
-	{
-		ft_putendl(line);
-		free(line);
-		lines++;
-	}
-	free(line);
-	if (lines <= 0)
-		error();
-	else
-		ft_putendl("yeahh boiiii");
+	data = malloc(sizeof(t_data));
+	parse(&ht);
 
 	ht = ht_new();
 	t_room *paul = malloc(sizeof(t_room));
@@ -39,15 +28,11 @@ int main(void)
 	paul->occupied = FALSE;
 	ht_insert(ht, "paul", paul);
 	paul = NULL;
-	// ht_insert(ht, "jennifer", "mee");
-	// ht_insert(ht, "jose", "bobs");
 	t_room *tmp_room = ht_search(ht, "paul");
 	ft_putendl(tmp_room->name);
 	ft_putendlnbr("tmp_room->start", tmp_room->start);
 	ft_putendlnbr("tmp_room->end", tmp_room->end);
 	ft_putendlnbr("tmp_room->occupied", tmp_room->occupied);
-	// ft_putendl(ht_search(ht, "jennifer")->name);
-	// ft_putendl(ht_search(ht, "jose")->name);
 	ht_free_hash_table(ht);
 	return (0);
 }

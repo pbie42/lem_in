@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 17:18:07 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 19:15:11 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,10 @@
 #define MINDIFF 2.25e-308
 #define HT_INITIAL_BASE_SIZE 53
 
-#include <sys/wait.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-#include <sys/param.h>
-#include <ftw.h>
-#include <dirent.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <signal.h>
-#include <termios.h>
 #include <err.h>
 #include <math.h>
 #include "../libft/includes/libftprintf.h"
@@ -93,32 +85,34 @@ typedef struct s_h_table
 	t_h_item **items;
 } t_h_table;
 
-typedef struct s_parse
+typedef struct s_data
 {
-	t_bool start;
-	t_bool end;
-	char *line;
-	struct s_parse *next;
+	int ants;
+	int num_rooms;
+	char *start;
+	char *end;
+	t_h_table *map;
+} t_data;
 
-} t_parse;
-
-int ht_hash(const char *s, const int a, const int m);
-int ht_get_hash(const char *s, const int buckets, const int attempt);
+double ft_floor(double x);
+double ft_sqroot(double square);
 int ft_is_prime(const int x);
 int ft_next_prime(int x);
-void error(void);
-void ht_free_item(t_h_item *i);
-void ht_free_hash_table(t_h_table *ht);
-void ht_insert(t_h_table *ht, const char *key, t_room *value);
-void ht_resize(t_h_table *ht, const int base_size);
-void ht_resize_up(t_h_table *ht);
-t_room *ht_search(t_h_table *ht, const char *key);
-double ft_sqroot(double square);
-double ft_floor(double x);
+int ht_get_hash(const char *s, const int buckets, const int attempt);
+int ht_hash(const char *s, const int a, const int m);
 long int ft_pow(int x, int n);
+t_bool is_ants(char *line, t_data *data);
 t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
-t_h_table *ht_new(void);
+t_room *ht_search(t_h_table *ht, const char *key);
+void parse_ants(char *line, int lines, t_data *data);
+void error(void);
+void ht_free_hash_table(t_h_table *ht);
+void ht_free_item(t_h_item *i);
+void ht_insert(t_h_table *ht, const char *key, t_room *value);
+void ht_resize(t_h_table *ht, const int base_size);
+void ht_resize_up(t_h_table *ht);
+void parse();
 
 #endif
