@@ -1,4 +1,5 @@
 *.o
 *.a
 lem-in
+lem-in.dSYM
 .DS_Store

@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 14:54:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 16:45:03 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 17:15:14 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int ht_get_hash(const char *s, const int buckets, const int attempt)
 	return ((hash_a + (attempt * (hash_b + 1))) % buckets);
 }
 
-void ht_insert(t_h_table *ht, const char *key, const char *value)
+void ht_insert(t_h_table *ht, const char *key, t_room *value)
 {
 	t_h_item *item;
 	t_h_item *cur_item;
@@ -65,7 +65,7 @@ void ht_insert(t_h_table *ht, const char *key, const char *value)
 	ht->count++;
 }
 
-char *ht_search(t_h_table *ht, const char *key)
+t_room *ht_search(t_h_table *ht, const char *key)
 {
 	t_h_item *item;
 	int index;

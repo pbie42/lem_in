@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 16:29:09 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 17:18:07 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef int t_bool;
 typedef struct s_room
 {
 	char *name;
+	t_bool start;
+	t_bool end;
 	t_bool occupied;
 	struct s_room **links;
 } t_room;
@@ -80,7 +82,7 @@ typedef struct s_room
 typedef struct s_h_item
 {
 	char *key;
-	char *value;
+	t_room *value;
 } t_h_item;
 
 typedef struct s_h_table
@@ -107,14 +109,14 @@ int ft_next_prime(int x);
 void error(void);
 void ht_free_item(t_h_item *i);
 void ht_free_hash_table(t_h_table *ht);
-void ht_insert(t_h_table *ht, const char *key, const char *value);
+void ht_insert(t_h_table *ht, const char *key, t_room *value);
 void ht_resize(t_h_table *ht, const int base_size);
 void ht_resize_up(t_h_table *ht);
-char *ht_search(t_h_table *ht, const char *key);
+t_room *ht_search(t_h_table *ht, const char *key);
 double ft_sqroot(double square);
 double ft_floor(double x);
 long int ft_pow(int x, int n);
-t_h_item *ht_new_item(const char *k, const char *v);
+t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
 t_h_table *ht_new(void);

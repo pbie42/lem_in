@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 14:54:27 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 15:16:54 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 17:21:02 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void ht_free_item(t_h_item *i)
 {
 	free(i->key);
+	free(i->value->name);
 	free(i->value);
 	free(i);
 }

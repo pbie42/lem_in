@@ -6,19 +6,19 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 14:54:03 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 16:29:02 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 17:16:10 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_h_item *ht_new_item(const char *k, const char *v)
+t_h_item *ht_new_item(const char *k, t_room *v)
 {
 	t_h_item *item;
 
 	item = malloc(sizeof(t_h_item));
 	item->key = ft_strdup(k);
-	item->value = ft_strdup(v);
+	item->value = v;
 	return (item);
 }
 
