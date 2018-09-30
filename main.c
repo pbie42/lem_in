@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paulbie <paulbie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 14:52:09 by paulbie          ###   ########.fr       */
+/*   Updated: 2018/09/30 16:45:31 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ int main(void)
 		ft_putendl("yeahh boiiii");
 
 	ht = ht_new();
+	ht_insert(ht, "paul", "bie");
+	ht_insert(ht, "jennifer", "mee");
+	ht_insert(ht, "jose", "bobs");
+	ft_putendl(ht_search(ht, "paul"));
+	ft_putendl(ht_search(ht, "jennifer"));
+	ft_putendl(ht_search(ht, "jose"));
 	ht_free_hash_table(ht);
-	printf("Square root ft_floor of %lf is %f\n", 55.0, ft_floor(sqrt(55.0)));
-	printf("ft_sqroot ft_floor of %lf is %f\n", 55.0, ft_floor(ft_sqroot(55.0)));
-	printf("is 5 prime? %d\n", ft_is_prime(5));
-	printf("prime after 6 is? %d\n", ft_next_prime(6));
 	return (0);
 }

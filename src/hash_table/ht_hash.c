@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 14:54:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 14:55:34 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 16:45:03 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int ht_hash(const char *s, const int a, const int m)
 	{
 		hash += ft_pow(a, len_s - (i + 1)) * s[i];
 		hash = hash % m;
+		i++;
 	}
 	return ((int)hash);
 }
