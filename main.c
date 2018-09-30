@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 17:26:30 by pbie             ###   ########.fr       */
+/*   Updated: 2018/09/30 17:34:41 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(void)
 	int lines;
 	t_h_table *ht;
 
+	lines = 0;
 	while (ft_get_next_line(0, &line) == 1)
 	{
 		ft_putendl(line);
