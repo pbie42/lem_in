@@ -6,7 +6,7 @@
 #    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/09/28 21:14:51 by pbie             ###   ########.fr        #
+#    Updated: 2018/09/30 14:56:46 by pbie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,15 @@ NAME = lem-in
 CFLAGS = -g -I includes
 
 SRC = main.c \
-		src/hash/hash.c \
+		src/hash_table/ht_free.c \
+		src/hash_table/ht_hash.c \
+		src/hash_table/ht_new.c \
+		src/hash_table/ht_resize.c \
 		src/utils/errors.c \
 		src/utils/ft_floor.c \
-		src/utils/prime.c \
+		src/utils/ft_prime.c \
 		src/utils/ft_sqroot.c \
-		src/utils/x_to_the_n.c
+		src/utils/ft_pow.c
 
 
 OBJ = $(SRC:.c=.o)
