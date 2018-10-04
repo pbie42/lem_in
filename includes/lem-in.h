@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 21:20:53 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 22:16:40 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_parse
 	char	*line;
 	int		lines;
 	int		rooms;
+	t_bool	ants_done;
 	t_bool	rooms_done;
 	t_bool	start_found;
 	t_bool	end_found;

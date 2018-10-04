@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 22:08:10 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 22:29:06 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_parse	*setup_parse(void)
 	p->lines = 0;
 	p->rooms = 0;
 	p->rooms_done = FALSE;
+	p->ants_done = FALSE;
 	p->start_found = FALSE;
 	p->end_found = FALSE;
 	return (p);
@@ -38,12 +39,17 @@ static t_parse	*setup_parse(void)
 
 static void		parse_room_link(t_parse *p, t_data *data)
 {
+	if (!p->ants_done)
+		error("ants", data, p->line);
 	if (!p->rooms_done && is_link(p->line))
 		p->rooms_done = TRUE;
 	if (p->rooms_done)
 	{
 		if (!p->start_found)
+		{
+			ft_putendl("in here");
 			error("start", data, p->line);
+		}
 		if (!p->end_found)
 			error("end", data, p->line);
 		if (p->rooms_done && p->rooms == 0)
@@ -69,12 +75,15 @@ void		parse(t_data *data)
 	while (ft_get_next_line(0, &p->line) == 1)
 	{
 		ft_putendl(p->line);
-		if (p->lines == 0)
-			parse_ants(p->line, data);
-		else if (is_command(p->line))
+		if (is_command(p->line))
 			set_found_command(p);
 		else if (is_comment(p->line))
 			;
+		else if (!p->ants_done)
+		{
+			p->ants_done = TRUE;
+			parse_ants(p->line, data);
+		}
 		else
 			parse_room_link(p, data);
 		free(p->line);
