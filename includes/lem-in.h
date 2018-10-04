@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 13:16:19 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 13:57:51 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,16 @@ typedef struct s_data
 	t_h_table *map;
 } t_data;
 
+typedef struct s_parse
+{
+	char	*line;
+	int		lines;
+	t_bool	rooms_done;
+	t_bool	links;
+	t_bool	start_found;
+	t_bool	end_found;
+} t_parse;
+
 double ft_floor(double x);
 double ft_sqroot(double square);
 int ft_is_prime(const int x);
@@ -102,6 +112,8 @@ int ht_get_hash(const char *s, const int buckets, const int attempt);
 int ht_hash(const char *s, const int a, const int m);
 long int ft_pow(int x, int n);
 t_bool is_ants(char *line, t_data *data);
+t_bool is_comment(char *line);
+t_bool is_valid_command(const char *line);
 t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);

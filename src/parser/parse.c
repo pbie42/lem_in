@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 13:19:49 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 13:58:03 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,35 @@
 
 void		parse(t_data *data)
 {
-	char	*line;
-	int		lines;
-	t_bool	rooms_done;
-	t_bool	links;
+	t_parse		*p;
 
-	lines = 0;
-	rooms_done = FALSE;
-	links = FALSE;
-	while (ft_get_next_line(0, &line) == 1)
+	p = malloc(sizeof(t_parse));
+	p->lines = 0;
+	p->rooms_done = FALSE;
+	p->links = FALSE;
+	p->start_found = FALSE;
+	while (ft_get_next_line(0, &p->line) == 1)
 	{
-		ft_putendl(line);
-		if (lines == 0)
-			parse_ants(line, data);
-		// if (!rooms_done && is_room(line))
-		// 	parse_room(line, data);
+		ft_putendl(p->line);
+		if (p->lines == 0)
+			parse_ants(p->line, data);
+		else if (is_comment(p->line))
+			;
+		else if (is_valid_command(p->line))
+		{
+
+		}
+		// else if (!p->rooms_done && is_room(p->line))
+		// 	parse_room(p->line, data);
 		else
 		{
-			rooms_done = TRUE;
+			p->rooms_done = TRUE;
 		}
-		free(line);
-		lines++;
+		free(p->line);
+		p->lines++;
 	}
-	free(line);
-	if (lines <= 0)
+	free(p->line);
+	if (p->lines <= 0)
 		error("empty", data);
 	else
 		ft_putendl("yeahh boiiii");
