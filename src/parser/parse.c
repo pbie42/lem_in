@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 13:58:03 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 14:19:26 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ void		parse(t_data *data)
 {
 	t_parse		*p;
 
+	p = NULL;
 	p = malloc(sizeof(t_parse));
 	p->lines = 0;
 	p->rooms_done = FALSE;
 	p->links = FALSE;
 	p->start_found = FALSE;
+	p->end_found = FALSE;
 	while (ft_get_next_line(0, &p->line) == 1)
 	{
 		ft_putendl(p->line);
 		if (p->lines == 0)
 			parse_ants(p->line, data);
+		else if (is_command(p->line))
+			set_found_command(p);
 		else if (is_comment(p->line))
 			;
-		else if (is_valid_command(p->line))
-		{
-
-		}
 		// else if (!p->rooms_done && is_room(p->line))
 		// 	parse_room(p->line, data);
 		else

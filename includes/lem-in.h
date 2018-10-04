@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 13:57:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 14:12:23 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int ht_hash(const char *s, const int a, const int m);
 long int ft_pow(int x, int n);
 t_bool is_ants(char *line, t_data *data);
 t_bool is_comment(char *line);
-t_bool is_valid_command(const char *line);
+t_bool is_command(const char *line);
 t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
@@ -127,5 +127,6 @@ void ht_insert(t_h_table *ht, const char *key, t_room *value);
 void ht_resize(t_h_table *ht, const int base_size);
 void ht_resize_up(t_h_table *ht);
 void parse();
+void set_found_command(t_parse *p);
 
 #endif
