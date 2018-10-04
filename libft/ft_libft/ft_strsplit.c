@@ -3,58 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:21:25 by pbie              #+#    #+#             */
-/*   Updated: 2016/03/09 15:28:52 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 19:31:39 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int			ft_cntwrd(char const *s, char c)
+static int		ft_count_words(char const *s, char c)
 {
-	unsigned int	i;
-	int				cntr;
+	int		i;
+	int		count;
 
+	if (!s || !c)
+		return (0);
 	i = 0;
-	cntr = 0;
+	count = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != '\0')
-			cntr++;
-		while (s[i] && (s[i] != c))
-			i++;
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			count++;
+		i++;
 	}
-	return (cntr);
+	return (count);
 }
 
-char				**ft_strsplit(char const *s, char c)
+static char		**ft_create_line(const char *s, char **arr, char c, int count)
 {
-	int				i;
-	int				j;
-	int				k;
-	char			**tab;
+	int		i;
+	int		k;
+	size_t	start;
+	size_t	length;
 
 	i = 0;
 	k = 0;
-	if (ft_cntwrd(s, c) == 0)
-		return (NULL);
-	tab = (char **)malloc(sizeof(char *) * (ft_cntwrd(s, c)) + 1);
-	if (tab == NULL)
-		return (NULL);
 	while (s[i])
 	{
-		while (s[i] == c)
+		if (s[i] != c && count-- > 0)
+		{
+			start = i;
+			length = 0;
+			while (s[i] != '\0' && s[i] != c)
+			{
+				i++;
+				length++;
+			}
+			arr[k] = ft_strsub(s, start, length);
+			k++;
+		}
+		if (s[i])
 			i++;
-		j = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (i > j)
-			tab[k++] = ft_strndup(s + j, i - j);
 	}
-	tab[k] = NULL;
-	return (tab);
+	return (arr);
+}
+
+char			**ft_strsplit(const char *s, char c)
+{
+	int		amt;
+	char	**arr;
+
+	amt = 0;
+	arr = NULL;
+	if (!s)
+		return (NULL);
+	amt = ft_count_words(s, c);
+	if (amt <= 0)
+		return (NULL);
+	if (!(arr = (char **)malloc(sizeof(char *) * (amt + 1))))
+		return (NULL);
+	arr = ft_create_line(s, arr, c, amt);
+	arr[amt] = NULL;
+	return (arr);
 }

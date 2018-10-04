@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 17:13:02 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 18:30:13 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int main(void)
 	ft_putendlnbr("tmp_room->occupied", tmp_room->occupied);
 	ht_free_hash_table(ht);
 	
-	while(1){
-		;
-	}
+	// while(1){
+	// 	;
+	// }
 	
 	return (0);
 }
