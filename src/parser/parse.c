@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 21:51:30 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 22:08:10 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ static void		parse_room_link(t_parse *p, t_data *data)
 		p->rooms_done = TRUE;
 	if (p->rooms_done)
 	{
+		if (!p->start_found)
+			error("start", data, p->line);
+		if (!p->end_found)
+			error("end", data, p->line);
+		if (p->rooms_done && p->rooms == 0)
+			error("rooms", data, p->line);
 		if (!is_link(p->line))
 			error("link", data, p->line);
 		ft_putendl("It's a LINK!!");
@@ -49,7 +55,8 @@ static void		parse_room_link(t_parse *p, t_data *data)
 	if (!p->rooms_done && !is_room(p->line))
 		error("room", data, p->line);
 	if (!p->rooms_done)
-		room_parse(p, data);
+		p->rooms++;
+		// room_parse(p, data);
 }
 
 void		parse(t_data *data)

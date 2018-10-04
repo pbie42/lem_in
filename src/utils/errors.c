@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 15:35:19 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 17:46:22 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 22:08:37 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	error(const char *msg, t_data *data, char *line)
 		ft_exit("Error Occurred: Empty Map!");
 	if (!ft_strcmp(msg, "ants"))
 		ft_exit("Error Occurred: No Ants!");
+	if (!ft_strcmp(msg, "start"))
+		ft_exit("Error Occurred: No Start Command!");
+	if (!ft_strcmp(msg, "end"))
+		ft_exit("Error Occurred: No End Command!");
+	if (!ft_strcmp(msg, "rooms"))
+		ft_exit("Error Occurred: No Rooms Given!");
 	if (!ft_strcmp(msg, "room"))
 	{
 		empty_line(line);
