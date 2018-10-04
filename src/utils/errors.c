@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 15:35:19 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 13:21:05 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 15:04:27 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	error(const char *msg, t_data *data)
 		ft_exit("Error Occurred: Empty Map!");
 	if (!ft_strcmp(msg, "ants"))
 		ft_exit("Error Occurred: No Ants!");
+	if (!ft_strcmp(msg, "newline"))
+	{
+		// Will need to figure out memory freeing at this point
+		ft_exit("Error Occurred: Empty Line Given!");
+	}
 	if (data && data->start != NULL){
 		free(data->start);
 		ft_putendl("freed start");
