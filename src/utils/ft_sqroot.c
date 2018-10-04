@@ -6,13 +6,13 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 19:05:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/28 20:03:38 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 11:19:01 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-double ft_sqroot(double square)
+double	ft_sqroot(double square)
 {
 	double root;
 	double last;
@@ -20,7 +20,8 @@ double ft_sqroot(double square)
 
 	root = square / 3;
 	diff = 1;
-	if (square <= 0) return 0;
+	if (square <= 0)
+		return (0);
 	last = root;
 	root = (root + square / root) / 2;
 	diff = root - last;
@@ -30,5 +31,5 @@ double ft_sqroot(double square)
 		root = (root + square / root) / 2;
 		diff = root - last;
 	}
-	return root;
+	return (root);
 }

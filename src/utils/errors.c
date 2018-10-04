@@ -6,13 +6,13 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 15:35:19 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 19:06:29 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 11:10:18 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-void error(void)
+void	error(void)
 {
 	ft_putendl("Error Occurred");
 }

@@ -6,17 +6,17 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 14:54:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 17:15:14 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 11:26:41 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-int ht_hash(const char *s, const int a, const int m)
+int				ht_hash(const char *s, const int a, const int m)
 {
-	long hash;
-	int len_s;
-	int i;
+	long		hash;
+	int			len_s;
+	int			i;
 
 	hash = 0;
 	len_s = ft_strlen(s);
@@ -30,23 +30,23 @@ int ht_hash(const char *s, const int a, const int m)
 	return ((int)hash);
 }
 
-int ht_get_hash(const char *s, const int buckets, const int attempt)
+int				ht_get_hash(const char *s, const int buckets, const int attempt)
 {
-	int hash_a;
-	int hash_b;
+	int			hash_a;
+	int			hash_b;
 
 	hash_a = ht_hash(s, HT_PRIME_1, buckets);
 	hash_b = ht_hash(s, HT_PRIME_2, buckets);
 	return ((hash_a + (attempt * (hash_b + 1))) % buckets);
 }
 
-void ht_insert(t_h_table *ht, const char *key, t_room *value)
+void			ht_insert(t_h_table *ht, const char *key, t_room *value)
 {
-	t_h_item *item;
-	t_h_item *cur_item;
-	int index;
-	int i;
-	int load;
+	t_h_item	*item;
+	t_h_item	*cur_item;
+	int			index;
+	int			i;
+	int			load;
 
 	load = ht->count * 100 / ht->size;
 	if (load > 70)
@@ -65,11 +65,11 @@ void ht_insert(t_h_table *ht, const char *key, t_room *value)
 	ht->count++;
 }
 
-t_room *ht_search(t_h_table *ht, const char *key)
+t_room			*ht_search(t_h_table *ht, const char *key)
 {
-	t_h_item *item;
-	int index;
-	int i;
+	t_h_item	*item;
+	int			index;
+	int			i;
 
 	index = ht_get_hash(key, ht->size, 0);
 	item = ht->items[index];
@@ -84,14 +84,3 @@ t_room *ht_search(t_h_table *ht, const char *key)
 	}
 	return (NULL);
 }
-
-// t_h_table			*ht_new(void)
-// {
-// 	t_h_table		*ht;
-
-// 	ht = malloc(sizeof(t_h_table));
-// 	ht->size = 53;
-// 	ht->count = 0;
-// 	ht->items = calloc((size_t)ht->size, sizeof(t_h_item*));
-// 	return (ht);
-// }
