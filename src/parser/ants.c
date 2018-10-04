@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:41 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 13:23:18 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 17:05:36 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	parse_ants(char *line, t_data *data)
 		ft_putendlnbr("data->ants ", data->ants);
 	}
 	else
-		error("ants", data);
+		error("ants", data, line);
 }

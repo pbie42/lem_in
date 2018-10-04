@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 16:36:05 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 17:39:38 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,13 +117,15 @@ t_bool is_command(const char *line);
 t_bool is_link(char* line);
 t_bool is_room(const char *line);
 t_bool ft_is_pos_num(const char *string);
+t_bool ft_only_white(char *s);
 t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
 t_room *ht_search(t_h_table *ht, const char *key);
 void parse_ants(char *line, t_data *data);
-void error(const char *msg, t_data *data);
+void error(const char *msg, t_data *data, char *line);
 void error_empty();
+void ft_free_matrix(char **matrix);
 void ht_free_hash_table(t_h_table *ht);
 void ht_free_item(t_h_item *i);
 void ht_insert(t_h_table *ht, const char *key, t_room *value);

@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rooms.c                                            :+:      :+:    :+:   */
+/*   ft_only_white.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 17:39:05 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/04 17:31:57 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/04 17:32:18 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_bool	is_room(const char *line)
+t_bool	ft_only_white(char *s)
 {
-	char	**room;
+	int	i;
 
-	if (line[0] == 'L')
-		return (FALSE);
-	if (ft_wordcount(line, ' ') != 3)
-		return (FALSE);
-	room = ft_strsplit(line, ' ');
-	if (!ft_is_pos_num(room[1]))
-	{
-		ft_free_matrix(room);
-		return (FALSE);
+	i = -1;
+	while(s[++i]){
+		if (s[i] == ' ' || s[i] == '\t' || s[i] == '\r' || s[i] == '\v'
+		|| s[i] == '\f' || s[i] == '\n')
+			;
+		else
+			return (FALSE);
 	}
-	if (!ft_is_pos_num(room[2]))
-	{
-		ft_free_matrix(room);
-		return (FALSE);
-	}
-	ft_free_matrix(room);
 	return (TRUE);
-}
-
-void	parse_room(char *line, t_data *data)
-{
 }
