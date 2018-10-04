@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 18:59:42 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 13:15:12 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ int main(void)
 	t_data *data;
 	t_h_table *ht;
 
+	data = NULL;
 	data = malloc(sizeof(t_data));
-	parse(&ht);
+	if (data == NULL)
+		ft_putendl("data is null");
+	parse(&data);
 
 	ht = ht_new();
+
 	t_room *paul = malloc(sizeof(t_room));
 	paul->name = ft_strdup("paul");
 	paul->start = FALSE;

@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/09/30 19:26:07 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 13:16:19 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
 t_room *ht_search(t_h_table *ht, const char *key);
 void parse_ants(char *line, t_data *data);
-void error(void);
+void error(const char *msg, t_data *data);
+void error_empty();
 void ht_free_hash_table(t_h_table *ht);
 void ht_free_item(t_h_item *i);
 void ht_insert(t_h_table *ht, const char *key, t_room *value);

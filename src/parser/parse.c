@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 11:23:48 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 13:19:49 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void		parse(t_data *data)
 		ft_putendl(line);
 		if (lines == 0)
 			parse_ants(line, data);
-		if (!rooms_done && is_room(line))
-			parse_room(line, data);
+		// if (!rooms_done && is_room(line))
+		// 	parse_room(line, data);
 		else
 		{
 			rooms_done = TRUE;
@@ -38,7 +38,7 @@ void		parse(t_data *data)
 	}
 	free(line);
 	if (lines <= 0)
-		error();
+		error("empty", data);
 	else
 		ft_putendl("yeahh boiiii");
 }
