@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 17:39:38 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 21:20:53 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void ht_insert(t_h_table *ht, const char *key, t_room *value);
 void ht_resize(t_h_table *ht, const int base_size);
 void ht_resize_up(t_h_table *ht);
 void parse();
+void room_parse(t_parse *p, t_data *data);
 void set_found_command(t_parse *p);
 
 #endif
