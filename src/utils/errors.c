@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 15:35:19 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 15:04:27 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 16:00:19 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ void	error(const char *msg, t_data *data)
 	{
 		// Will need to figure out memory freeing at this point
 		ft_exit("Error Occurred: Empty Line Given!");
+	}
+	if (!ft_strcmp(msg, "room"))
+	{
+		// Will need to figure out memory freeing at this point
+		ft_exit("Error Occurred: Invalid Room Given!");
+	}
+	if (!ft_strcmp(msg, "link"))
+	{
+		// Will need to figure out memory freeing at this point
+		ft_exit("Error Occurred: Invalid Link Given!");
 	}
 	if (data && data->start != NULL){
 		free(data->start);

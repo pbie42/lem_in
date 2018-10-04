@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 15:20:28 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/04 16:36:05 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ typedef struct s_parse
 {
 	char	*line;
 	int		lines;
+	int		rooms;
 	t_bool	rooms_done;
-	t_bool	links_done;
 	t_bool	start_found;
 	t_bool	end_found;
 } t_parse;
@@ -114,6 +114,7 @@ long int ft_pow(int x, int n);
 t_bool is_ants(char *line, t_data *data);
 t_bool is_comment(char *line);
 t_bool is_command(const char *line);
+t_bool is_link(char* line);
 t_bool is_room(const char *line);
 t_bool ft_is_pos_num(const char *string);
 t_h_item *ht_new_item(const char *k, t_room *v);

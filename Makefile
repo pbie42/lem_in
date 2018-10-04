@@ -6,7 +6,7 @@
 #    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/04 15:22:24 by pbie             ###   ########.fr        #
+#    Updated: 2018/10/04 16:22:27 by pbie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = main.c \
 		src/parser/ants.c \
 		src/parser/commands.c \
 		src/parser/comments.c \
+		src/parser/links.c \
 		src/parser/parse.c \
 		src/parser/rooms.c \
 		src/utils/errors.c \
