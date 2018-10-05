@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 13:33:53 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 14:29:56 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_room	*setup_room(char *name, t_bool start_done, t_bool end_done)
 	room->end = FALSE;
 	room->occupied = FALSE;
 	room->visited = FALSE;
-	room->next = NULL;
+	room->link = NULL;
 	return (room);
 }
 
@@ -64,7 +64,7 @@ void	room_parse(t_parse *p, t_data *data)
 		data->start = ft_strdup(s_room[0]);
 		ft_putendl(data->start);
 	}
-	if (p->end_found && !data->start)
+	if (p->end_found && !data->end)
 	{
 		end_done = TRUE;
 		data->end = ft_strdup(s_room[0]);

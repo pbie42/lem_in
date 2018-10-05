@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 13:33:21 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 14:54:34 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@
 
 typedef int t_bool;
 
+typedef struct s_link
+{
+	char *key;
+	struct s_link *next;
+} t_link;
+
 typedef struct s_room
 {
 	char *name;
@@ -69,7 +75,7 @@ typedef struct s_room
 	t_bool end;
 	t_bool occupied;
 	t_bool visited;
-	struct s_room *next;
+	t_link *link;
 } t_room;
 
 typedef struct s_h_item
@@ -113,18 +119,18 @@ int ft_next_prime(int x);
 int ht_get_hash(const char *s, const int buckets, const int attempt);
 int ht_hash(const char *s, const int a, const int m);
 long int ft_pow(int x, int n);
-t_bool is_ants(char *line, t_data *data);
-t_bool is_comment(char *line);
-t_bool is_command(const char *line);
-t_bool is_link(char* line);
-t_bool is_room(const char *line);
 t_bool ft_is_pos_num(const char *string);
 t_bool ft_only_white(char *s);
+t_bool is_ants(char *line, t_data *data);
+t_bool is_command(const char *line);
+t_bool is_comment(char *line);
+t_bool is_link(char* line);
+t_bool is_room(const char *line);
 t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
+t_link *l_new(char *key);
 t_room *ht_search(t_h_table *ht, const char *key);
-void parse_ants(char *line, t_data *data);
 void error(const char *msg, t_data *data, char *line);
 void error_empty();
 void ft_free_matrix(char **matrix);
@@ -133,7 +139,11 @@ void ht_free_item(t_h_item *i);
 void ht_insert(t_h_table *ht, const char *key, t_room *value);
 void ht_resize(t_h_table *ht, const int base_size);
 void ht_resize_up(t_h_table *ht);
+void l_add_end(t_room *room, t_link *new_link);
+void link_parse(t_parse *p, t_data *data);
 void parse();
+void parse_ants(char *line, t_data *data);
+void print_links(t_room *room);
 void room_parse(t_parse *p, t_data *data);
 void set_found_command(t_parse *p);
 
