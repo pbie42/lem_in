@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 14:53:13 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 15:53:02 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ t_data *setup_data(void)
 	return (data);
 }
 
+void	free_data(t_data *data)
+{
+	ht_free_hash_table(data->map);
+	if (data->start)
+		free(data->start);
+	if (data->end)
+		free(data->end);
+	free(data);
+}
+
 int main(void)
 {
 	t_data *data;
@@ -39,32 +49,7 @@ int main(void)
 
 	tmp_room = ht_search(data->map, "0");
 	print_links(tmp_room);
-	// ft_putendl("about to show 0");
-	// ft_putendl(tmp_room->name);
-	// tmp_room->start = TRUE;
-	// ft_putendlnbr("tmp_room->start ", tmp_room->start);
-	// ft_putendlnbr("tmp_room->end ", tmp_room->end);
-	// ft_putendlnbr("tmp_room->occupied ", tmp_room->occupied);
-	// tmp_room = ht_search(data->map, "1");
-	// ft_putendl(tmp_room->name);
-	// ft_putendlnbr("tmp_room->start ", tmp_room->start);
-	// ft_putendlnbr("tmp_room->end ", tmp_room->end);
-	// ft_putendlnbr("tmp_room->occupied ", tmp_room->occupied);
-	// tmp_room = ht_search(data->map, "2");
-	// ft_putendl(tmp_room->name);
-	// ft_putendlnbr("tmp_room->start ", tmp_room->start);
-	// ft_putendlnbr("tmp_room->end ", tmp_room->end);
-	// ft_putendlnbr("tmp_room->occupied ", tmp_room->occupied);
-	// tmp_room = ht_search(data->map, "3");
-	// ft_putendl(tmp_room->name);
-	// ft_putendlnbr("tmp_room->start ", tmp_room->start);
-	// ft_putendlnbr("tmp_room->end ", tmp_room->end);
-	// ft_putendlnbr("tmp_room->occupied ", tmp_room->occupied);
-
-	ht_free_hash_table(data->map);
-	if (data->start)
-		free(data->start);
-	free(data);
+	free_data(data);
 	
 	// while(1){
 	// 	;

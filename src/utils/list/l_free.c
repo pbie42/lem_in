@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ht_free.c                                          :+:      :+:    :+:   */
+/*   l_free.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/30 14:54:27 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 15:50:21 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/05 15:41:33 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/05 15:48:35 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-void			ht_free_item(t_h_item *i)
+void		l_free(t_link *start)
 {
-	free(i->key);
-	free(i->value->name);
-	l_free(i->value->link);
-	free(i->value);
-	free(i);
-}
+	t_link	*curr;
 
-void			ht_free_hash_table(t_h_table *ht)
-{
-	int			i;
-	t_h_item	*item;
-
-	i = 0;
-	while (i < ht->size)
+	while ((curr = start) != NULL)
 	{
-		item = ht->items[i];
-		if (item != NULL)
-			ht_free_item(item);
-		i++;
+		start = start->next;
+		free(curr->key);
+		free(curr);
 	}
-	free(ht->items);
-	free(ht);
 }
