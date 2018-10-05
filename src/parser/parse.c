@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 22:29:06 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 11:27:49 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ static void		parse_room_link(t_parse *p, t_data *data)
 	if (p->rooms_done)
 	{
 		if (!p->start_found)
-		{
-			ft_putendl("in here");
 			error("start", data, p->line);
-		}
 		if (!p->end_found)
 			error("end", data, p->line);
 		if (p->rooms_done && p->rooms == 0)
