@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 15:50:09 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 16:20:14 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int ft_next_prime(int x);
 int ht_get_hash(const char *s, const int buckets, const int attempt);
 int ht_hash(const char *s, const int a, const int m);
 long int ft_pow(int x, int n);
-t_bool ft_is_pos_num(const char *string);
+t_bool ft_is_num(const char *string);
 t_bool ft_only_white(char *s);
 t_bool is_ants(char *line, t_data *data);
 t_bool is_command(const char *line);

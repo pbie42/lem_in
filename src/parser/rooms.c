@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 14:29:56 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 16:20:14 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ t_bool	is_room(const char *line)
 	if (ft_wordcount(line, ' ') != 3)
 		return (FALSE);
 	room = ft_strsplit(line, ' ');
-	if (!ft_is_pos_num(room[1]))
+	if (!ft_is_num(room[1]))
 	{
 		ft_free_matrix(room);
 		return (FALSE);
 	}
-	if (!ft_is_pos_num(room[2]))
+	if (!ft_is_num(room[2]))
 	{
 		ft_free_matrix(room);
 		return (FALSE);

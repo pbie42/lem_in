@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_pos_num.c                                    :+:      :+:    :+:   */
+/*   l_new.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 15:10:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 16:16:18 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/05 16:21:29 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/05 16:21:48 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_bool		ft_is_pos_num(const char *string)
+t_link		*l_new(char *key)
 {
-	int		i;
+	t_link	*new_link;
 
-	i = -1;
-	if (string[0] == '-' && string[1] && ft_isdigit(string[1]))
-		i++;
-	while (string[++i])
-		if (!ft_isdigit(string[i]))
-			return (FALSE);
-	return (TRUE);
+	new_link = (t_link*)malloc(sizeof(t_link));
+	new_link->key = ft_strdup(key);
+	new_link->next = NULL;
+	return (new_link);
 }

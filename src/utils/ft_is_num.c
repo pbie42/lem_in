@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   l_add_end.c                                        :+:      :+:    :+:   */
+/*   ft_is_num.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 13:27:46 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 16:21:46 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/05 16:20:31 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/05 16:20:32 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-void			l_add_end(t_room *room, t_link *new_link)
+t_bool		ft_is_num(const char *string)
 {
-	t_link		*tmp;
+	int		i;
 
-	tmp = room->link;
-	if (!room->link)
-		room->link = new_link;
-	else if (tmp->next == NULL)
-		tmp->next = new_link;
-	else
-	{
-		ft_putendl("about to while");
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new_link;
-	}
-	ft_putendl("leaving add end");
+	i = -1;
+	if (string[0] == '-' && string[1] && ft_isdigit(string[1]))
+		i++;
+	while (string[++i])
+		if (!ft_isdigit(string[i]))
+			return (FALSE);
+	return (TRUE);
 }
