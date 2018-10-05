@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 13:27:46 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 16:21:46 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 17:16:01 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void			l_add_end(t_room *room, t_link *new_link)
 		tmp->next = new_link;
 	else
 	{
-		ft_putendl("about to while");
+		// ft_putendl("about to while");
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new_link;
 	}
-	ft_putendl("leaving add end");
+	// ft_putendl("leaving add end");
 }

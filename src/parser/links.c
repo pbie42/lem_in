@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:37 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 15:55:36 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 17:30:59 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ t_bool		is_link(char* line)
 	return (TRUE);
 }
 
+t_bool	check_links(t_link *start, char *key)
+{
+	t_link	*tmp;
+
+	tmp = start;
+	if (!start)
+		return (FALSE);
+	if (!ft_strcmp(key, tmp->key))
+		return (TRUE);
+	while (tmp->next)
+	{
+		if (!ft_strcmp(key, tmp->next->key))
+			return (TRUE);
+		tmp = tmp->next;
+	}
+	if (!ft_strcmp(key, tmp->key))
+		return (TRUE);
+	return (FALSE);
+}
+
 void		link_parse(t_parse *p, t_data *data)
 {
 	char	**link;
@@ -44,19 +64,18 @@ void		link_parse(t_parse *p, t_data *data)
 	new_link = NULL;
 	link = ft_strsplit(p->line, '-');
 	room = ht_search(data->map, link[0]);
-	ft_putendl("found room");
 	linked_room = ht_search(data->map, link[1]);
-	ft_putendl("found linked room");
 	if (!room || !linked_room)
 	{
 		ft_free_matrix(link);
 		return ;
 	}
-	ft_putendl("about to make new link");
 	new_link = l_new(linked_room->name);
-	ft_putendl("about to add to end");
-	l_add_end(room, new_link);
-	ft_putstr("room->link->key: ");
-	ft_putendl(room->link->key);
+	if (!check_links(room->link, new_link->key))
+		l_add_end(room, new_link);
+	new_link = NULL;
+	new_link = l_new(room->name);
+	if (!check_links(linked_room->link, new_link->key))
+		l_add_end(linked_room, new_link);
 	ft_free_matrix(link);
 }
