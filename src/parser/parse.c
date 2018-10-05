@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 14:20:22 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 16:46:33 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static t_bool	validate_parse(t_parse *p, t_data *data)
 {
+	if (!p->rooms_done)
+		error("room", data, p->line);
+	ft_putendl("rooms done");
 	if (p->start_found && !data->start)
 		error("startroom", data, p->line);
 	if (p->end_found && !data->end)
@@ -90,10 +93,11 @@ void		parse(t_data *data)
 		free(p->line);
 		p->lines++;
 	}
-	free(p->line);
 	if (p->lines <= 0)
 		error("empty", data, NULL);
+	ft_putendl("about to validate parse");
 	if (validate_parse(p, data))
 		ft_putendl("VALID PARSE!");
+	free(p->line);
 	free(p);
 }
