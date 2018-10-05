@@ -6,14 +6,18 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 11:27:49 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 11:54:23 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-static t_bool	validate_parse(t_parse *p)
+static t_bool	validate_parse(t_parse *p, t_data *data)
 {
+	if (p->start_found && !data->start)
+		error("startroom", data, p->line);
+	if (p->end_found && !data->end)
+		error("endroom", data, p->line);
 	if (p->start_found && p->end_found && p->rooms_done)
 		return (TRUE);
 	ft_putendlnbr("p->start_found ", p->start_found);
@@ -58,8 +62,8 @@ static void		parse_room_link(t_parse *p, t_data *data)
 	if (!p->rooms_done && !is_room(p->line))
 		error("room", data, p->line);
 	if (!p->rooms_done)
-		p->rooms++;
-		// room_parse(p, data);
+		room_parse(p, data);
+		// p->rooms++;
 }
 
 void		parse(t_data *data)
@@ -89,7 +93,7 @@ void		parse(t_data *data)
 	free(p->line);
 	if (p->lines <= 0)
 		error("empty", data, NULL);
-	if (validate_parse(p))
+	if (validate_parse(p, data))
 		ft_putendl("VALID PARSE!");
 	free(p);
 }

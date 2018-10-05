@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 22:16:40 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 13:33:21 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ typedef struct s_room
 	t_bool start;
 	t_bool end;
 	t_bool occupied;
-	struct s_room **links;
+	t_bool visited;
+	struct s_room *next;
 } t_room;
 
 typedef struct s_h_item
