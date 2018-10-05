@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 15:53:02 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/05 15:59:48 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int main(void)
 		ft_putendl("data is null");
 	parse(data);
 
-	tmp_room = ht_search(data->map, "0");
+	ft_putendl("about to print links");
+	tmp_room = ht_search(data->map, data->start);
 	print_links(tmp_room);
 	free_data(data);
 	
