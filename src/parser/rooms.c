@@ -6,13 +6,13 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 16:20:14 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/08 11:54:14 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_bool	is_room(const char *line)
+t_bool		is_room(const char *line)
 {
 	char	**room;
 
@@ -35,9 +35,9 @@ t_bool	is_room(const char *line)
 	return (TRUE);
 }
 
-t_room	*setup_room(char *name, t_bool start_done, t_bool end_done)
+t_room		*setup_room(char *name, t_bool start_done, t_bool end_done)
 {
-	t_room *room;
+	t_room	*room;
 
 	room = (t_room *)malloc(sizeof(t_room));
 	room->name = ft_strdup(name);
@@ -49,28 +49,28 @@ t_room	*setup_room(char *name, t_bool start_done, t_bool end_done)
 	return (room);
 }
 
-void	room_parse(t_parse *p, t_data *data)
+void		room_parse(t_parse *p, t_data *data)
 {
 	char	**s_room;
-	t_room *room;
-	t_bool start_done;
-	t_bool end_done;
+	t_room	*room;
+	t_bool	start;
+	t_bool	end;
 
-	start_done = FALSE;
+	start = FALSE;
 	s_room = ft_strsplit(p->line, ' ');
 	if (p->start_found && !data->start)
 	{
-		start_done = TRUE;
+		start = TRUE;
 		data->start = ft_strdup(s_room[0]);
 		ft_putendl(data->start);
 	}
 	if (p->end_found && !data->end)
 	{
-		end_done = TRUE;
+		end = TRUE;
 		data->end = ft_strdup(s_room[0]);
 		ft_putendl(data->end);
 	}
-	ht_insert(data->map, s_room[0], setup_room(s_room[0], start_done, end_done));
+	ht_insert(data->map, s_room[0], setup_room(s_room[0], start, end));
 	ft_free_matrix(s_room);
 	p->rooms++;
 }

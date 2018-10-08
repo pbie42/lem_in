@@ -6,15 +6,15 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:37 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 17:30:59 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/08 11:48:30 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_bool		is_link(char* line)
+t_bool		is_link(char *line)
 {
-	char **link;
+	char	**link;
 
 	if (line[0] == 'L')
 		return (FALSE);
@@ -32,7 +32,7 @@ t_bool		is_link(char* line)
 	return (TRUE);
 }
 
-t_bool	check_links(t_link *start, char *key)
+t_bool		check_links(t_link *start, char *key)
 {
 	t_link	*tmp;
 

@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:41 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 11:43:43 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/08 11:45:52 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ t_bool	is_ants(char *line, t_data *data)
 void	parse_ants(char *line, t_data *data)
 {
 	int	ants;
-	if (is_ants(line, data)) {
+
+	if (is_ants(line, data))
+	{
 		ants = ft_atoi(line);
 		if (ants <= 0)
 			error("ants", data, line);
