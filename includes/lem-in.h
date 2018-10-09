@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 16:20:14 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 14:48:09 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,25 @@ typedef struct s_room
 	t_bool end;
 	t_bool occupied;
 	t_bool visited;
+	t_bool hidden;
 	t_link *link;
 } t_room;
+
+typedef struct s_qv
+{
+	t_room *room;
+	int level;
+	struct s_qv *next;
+} t_qv;
+
+typedef struct s_bfs
+{
+	t_qv *s_vis;
+	t_qv *s_que;
+	t_qv *e_vis;
+	t_qv *e_que;
+	t_link *tmp;
+} t_bfs;
 
 typedef struct s_h_item
 {
@@ -118,6 +135,7 @@ int ft_is_prime(const int x);
 int ft_next_prime(int x);
 int ht_get_hash(const char *s, const int buckets, const int attempt);
 int ht_hash(const char *s, const int a, const int m);
+int list_length(t_qv *list);
 long int ft_pow(int x, int n);
 t_bool ft_is_num(const char *string);
 t_bool ft_only_white(char *s);
@@ -131,6 +149,7 @@ t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
 t_link *l_new(char *key);
 t_room *ht_search(t_h_table *ht, const char *key);
+t_qv *new_link(t_room *room, int level);
 void error(const char *msg, t_data *data, char *line);
 void error_empty();
 void ft_free_matrix(char **matrix);
