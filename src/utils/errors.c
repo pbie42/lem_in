@@ -6,11 +6,17 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 15:35:19 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 16:46:20 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 17:25:03 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
+
+void	path_error(const char *msg, t_data *data, t_bfs *bfs)
+{
+	if (!ft_strcmp(msg, "end"))
+		ft_exit("Error Occured: No path from start to end rooms");
+}
 
 void	empty_line(char *line)
 {

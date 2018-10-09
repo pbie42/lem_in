@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:26:35 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 16:59:08 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 17:28:20 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void			bfs(t_data *data)
 		bfs->s_que = remove_from_queue(bfs->s_que);
 	}
 	if (!end_found)
-		ft_putendl("END NEVER FOUND");
+		path_error("end", data, bfs);
 	ft_putendl("about to print path");
 	print_path(ht_search(data->map, data->end));
 }

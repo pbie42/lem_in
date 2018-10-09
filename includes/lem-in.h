@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 16:47:39 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 17:27:54 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ void l_free(t_link *start);
 void link_parse(t_parse *p, t_data *data);
 void parse();
 void parse_ants(char *line, t_data *data);
+void path_error(const char *msg, t_data *data, t_bfs *bfs);
 void print_links(t_room *room);
 void print_path(t_room *end);
 void room_parse(t_parse *p, t_data *data);
