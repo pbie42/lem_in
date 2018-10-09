@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:26:35 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 18:35:11 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 21:02:37 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,27 @@ void		add_to_q(t_qv *start, t_qv *new_link)
 	tmp->next = new_link;
 }
 
+void		add_end_parent(t_room *end, t_room *parent)
+{
+	t_room *tmp;
+	if (!end->end_parent)
+		end->end_parent = parent;
+	else
+	{
+		tmp = end;
+		while (tmp->end_parent)
+			tmp = tmp->end_parent;
+		tmp->end_parent = parent;
+	}
+	tmp = end;
+	while (tmp->end_parent)
+	{
+		ft_putstr("end parent: ");
+		ft_putendl(tmp->end_parent->name);
+		tmp = tmp->end_parent;
+	}
+}
+
 void			bfs(t_data *data)
 {
 	t_bfs		*bfs;
@@ -64,7 +85,7 @@ void			bfs(t_data *data)
 	tmp_room = ht_search(data->map, data->start);
 	tmp_room->visited = TRUE;
 	end_found = FALSE;
-	while (bfs->s_que && !end_found)
+	while (bfs->s_que)
 	{
 		bfs->links = bfs->s_que->room->link;
 		while (bfs->links)
@@ -73,10 +94,16 @@ void			bfs(t_data *data)
 			if (!tmp_room->visited)
 			{
 				if (!ft_strcmp(tmp_room->name, data->end))
+				{
 					end_found = TRUE;
-				tmp_room->visited = TRUE;
-				tmp_room->parent = bfs->s_que->room;
-				add_to_q(bfs->s_que, new_link(tmp_room, bfs->s_que->level + 1));
+					add_end_parent(tmp_room, bfs->s_que->room);
+				}
+				else
+				{
+					tmp_room->visited = TRUE;
+					tmp_room->parent = bfs->s_que->room;
+					add_to_q(bfs->s_que, new_link(tmp_room, bfs->s_que->level + 1));
+				}
 			}
 			tmp_room = NULL;
 			bfs->links = bfs->links->next;
@@ -87,5 +114,6 @@ void			bfs(t_data *data)
 		path_error("end", data, bfs);
 	free(bfs->s_que);
 	free(bfs);
+	ft_putendl("about to print paths");
 	print_path(ht_search(data->map, data->end));
 }

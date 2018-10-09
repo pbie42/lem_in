@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 17:27:54 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 20:27:48 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_room
 	t_bool hidden;
 	t_link *link;
 	struct s_room *parent;
+	struct s_room *end_parent;
 } t_room;
 
 typedef struct s_qv
@@ -86,6 +87,12 @@ typedef struct s_qv
 	int level;
 	struct s_qv *next;
 } t_qv;
+
+typedef struct s_path
+{
+	t_room *room;
+	struct s_path *next;
+} t_path;
 
 typedef struct s_bfs
 {
