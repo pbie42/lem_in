@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:26:35 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 17:49:21 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 18:35:11 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ t_qv		*remove_from_queue(t_qv *start)
 	return (NULL);
 }
 
-void		add_to_q_end(t_qv *start, t_qv *new_link)
+void		add_to_q(t_qv *start, t_qv *new_link)
 {
-		t_qv	*tmp;
+	t_qv	*tmp;
 
-		tmp = start;
-		while(tmp->next)
-			tmp = tmp->next;
-		tmp->next = new_link;
+	tmp = start;
+	while(tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_link;
 }
 
 void			bfs(t_data *data)
@@ -58,8 +58,6 @@ void			bfs(t_data *data)
 	t_bfs		*bfs;
 	t_room	*tmp_room;
 	t_bool	end_found;
-	int		len;
-	int		i;
 
 	bfs = (t_bfs *)malloc(sizeof(t_bfs));
 	bfs->s_que = new_link(ht_search(data->map, data->start), 0);
@@ -78,7 +76,7 @@ void			bfs(t_data *data)
 					end_found = TRUE;
 				tmp_room->visited = TRUE;
 				tmp_room->parent = bfs->s_que->room;
-				add_to_q_end(bfs->s_que, new_link(tmp_room, bfs->s_que->level + 1));
+				add_to_q(bfs->s_que, new_link(tmp_room, bfs->s_que->level + 1));
 			}
 			tmp_room = NULL;
 			bfs->links = bfs->links->next;
