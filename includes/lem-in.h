@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 14:48:09 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 16:47:39 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_room
 	t_bool visited;
 	t_bool hidden;
 	t_link *link;
+	struct s_room *parent;
 } t_room;
 
 typedef struct s_qv
@@ -92,7 +93,7 @@ typedef struct s_bfs
 	t_qv *s_que;
 	t_qv *e_vis;
 	t_qv *e_que;
-	t_link *tmp;
+	t_link *links;
 } t_bfs;
 
 typedef struct s_h_item
@@ -149,7 +150,9 @@ t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
 t_link *l_new(char *key);
 t_room *ht_search(t_h_table *ht, const char *key);
+t_qv *add_to_start(t_qv *head, t_qv *new_link);
 t_qv *new_link(t_room *room, int level);
+void bfs(t_data *data);
 void error(const char *msg, t_data *data, char *line);
 void error_empty();
 void ft_free_matrix(char **matrix);
@@ -164,6 +167,7 @@ void link_parse(t_parse *p, t_data *data);
 void parse();
 void parse_ants(char *line, t_data *data);
 void print_links(t_room *room);
+void print_path(t_room *end);
 void room_parse(t_parse *p, t_data *data);
 void set_found_command(t_parse *p);
 

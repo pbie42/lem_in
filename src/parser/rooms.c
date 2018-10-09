@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/08 11:54:14 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 16:36:08 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_room		*setup_room(char *name, t_bool start_done, t_bool end_done)
 	room->end = FALSE;
 	room->occupied = FALSE;
 	room->visited = FALSE;
+	room->parent = NULL;
 	room->link = NULL;
 	return (room);
 }

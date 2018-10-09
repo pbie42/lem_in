@@ -6,7 +6,7 @@
 #    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/05 16:22:10 by pbie             ###   ########.fr        #
+#    Updated: 2018/10/09 16:49:24 by pbie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,10 @@ NAME = lem-in
 CFLAGS = -g -I includes
 
 SRC = main.c \
+		src/bfs/list/add_to_start.c \
+		src/bfs/list/list_length.c \
+		src/bfs/list/new_link.c \
+		src/bfs/bfs.c \
 		src/hash_table/ht_free.c \
 		src/hash_table/ht_hash.c \
 		src/hash_table/ht_new.c \
@@ -26,6 +30,7 @@ SRC = main.c \
 		src/parser/parse.c \
 		src/parser/rooms.c \
 		src/print/print_links.c \
+		src/print/print_path.c \
 		src/utils/errors.c \
 		src/utils/ft_floor.c \
 		src/utils/ft_free_matrix.c \
