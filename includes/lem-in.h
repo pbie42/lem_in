@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 20:27:48 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 22:03:58 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,17 @@ typedef struct s_qv
 	struct s_qv *next;
 } t_qv;
 
-typedef struct s_path
+// typedef struct s_path
+// {
+// 	t_room *room;
+// 	struct s_path *next;
+// } t_path;
+
+typedef struct s_paths
 {
-	t_room *room;
-	struct s_path *next;
-} t_path;
+	t_qv *path;
+	struct s_paths *next;
+} t_paths;
 
 typedef struct s_bfs
 {
@@ -124,6 +130,7 @@ typedef struct s_data
 	char *start;
 	char *end;
 	t_h_table *map;
+	t_paths *paths;
 } t_data;
 
 typedef struct s_parse
@@ -160,6 +167,7 @@ t_room *ht_search(t_h_table *ht, const char *key);
 t_qv *add_to_start(t_qv *head, t_qv *new_link);
 t_qv *new_link(t_room *room, int level);
 void bfs(t_data *data);
+void construct_paths(t_room *end, t_data *data);
 void error(const char *msg, t_data *data, char *line);
 void error_empty();
 void ft_free_matrix(char **matrix);
@@ -175,7 +183,7 @@ void parse();
 void parse_ants(char *line, t_data *data);
 void path_error(const char *msg, t_data *data, t_bfs *bfs);
 void print_links(t_room *room);
-void print_path(t_room *end);
+void print_path(t_qv *path);
 void room_parse(t_parse *p, t_data *data);
 void set_found_command(t_parse *p);
 

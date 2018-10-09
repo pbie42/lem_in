@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:26:35 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 21:02:37 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 21:14:11 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,4 @@ void			bfs(t_data *data)
 	free(bfs->s_que);
 	free(bfs);
 	ft_putendl("about to print paths");
-	print_path(ht_search(data->map, data->end));
 }
