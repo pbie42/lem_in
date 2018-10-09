@@ -6,15 +6,30 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 16:28:34 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 17:00:07 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 17:57:31 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
+void		free_print_path(t_qv *path)
+{
+	t_qv *tmp;
+	t_qv *tmp2;
+
+	tmp = path;
+	while (tmp)
+	{
+		tmp2 = tmp;
+		tmp = tmp->next;
+		free(tmp2);
+	}
+}
+
 void		print_path(t_room *end)
 {
 	t_qv	*path;
+	t_qv	*tmp_path;
 	t_room *tmp;
 
 	tmp = end;
@@ -28,11 +43,13 @@ void		print_path(t_room *end)
 		tmp = tmp->parent;
 	}
 	ft_putstr(path->room->name);
-	while (path->next)
+	tmp_path = path;
+	while (tmp_path->next)
 	{
 		ft_putstr(" -> ");
-		ft_putstr(path->next->room->name);
-		path = path->next;
+		ft_putstr(tmp_path->next->room->name);
+		tmp_path = tmp_path->next;
 	}
 	ft_putchar('\n');
+	free_print_path(path);
 }

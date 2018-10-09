@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:26:35 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 17:28:20 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/09 17:49:21 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ t_qv		*which_queue(t_qv *start, t_qv *end)
 
 t_qv		*remove_from_queue(t_qv *start)
 {
+	t_qv	*tmp;
+
 	if (!start)
 		return (NULL);
 	if (start->next)
 	{
+		tmp = start;
 		start = start->next;
+		free(tmp);
 		return (start);
 	}
 	start->room = NULL;
@@ -70,13 +74,8 @@ void			bfs(t_data *data)
 			tmp_room = ht_search(data->map, bfs->links->key);
 			if (!tmp_room->visited)
 			{
-				ft_putstr("room is: ");
-				ft_putendl(tmp_room->name);
 				if (!ft_strcmp(tmp_room->name, data->end))
-				{
 					end_found = TRUE;
-					ft_putendl("END REACHED!!");
-				}
 				tmp_room->visited = TRUE;
 				tmp_room->parent = bfs->s_que->room;
 				add_to_q_end(bfs->s_que, new_link(tmp_room, bfs->s_que->level + 1));
@@ -88,6 +87,7 @@ void			bfs(t_data *data)
 	}
 	if (!end_found)
 		path_error("end", data, bfs);
-	ft_putendl("about to print path");
+	free(bfs->s_que);
+	free(bfs);
 	print_path(ht_search(data->map, data->end));
 }
