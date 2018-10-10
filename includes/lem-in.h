@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 22:03:58 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/10 22:39:48 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,16 @@ typedef struct s_link
 	struct s_link *next;
 } t_link;
 
+typedef struct s_ant
+{
+	int num;
+	t_bool moved;
+} t_ant;
+
 typedef struct s_room
 {
 	char *name;
+	t_ant *ant;
 	t_bool start;
 	t_bool end;
 	t_bool occupied;

@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:38:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 13:57:27 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/10 22:39:27 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ t_qv		*new_link(t_room *room, int level)
 	new_qv->room = room;
 	new_qv->level = level;
 	new_qv->next = NULL;
+	room->ant = (t_ant *)malloc(sizeof(t_ant));
 	return (new_qv);
 }
