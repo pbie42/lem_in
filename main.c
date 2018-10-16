@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 22:04:44 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/16 22:07:54 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ t_data *setup_data(void)
 
 	data = malloc(sizeof(t_data));
 	data->ants = 0;
+	data->ant_num = 1;
+	data->moved = NULL;
+	data->end_ants = 0;
 	data->num_rooms = 0;
 	data->start = NULL;
 	data->end = NULL;
@@ -52,6 +55,7 @@ int main(void)
 	// ft_putendl("about to print links");
 	// tmp_room = ht_search(data->map, data->start);
 	// print_links(tmp_room);
+	traversal(data);
 	free_data(data);
 	
 	// while(1){

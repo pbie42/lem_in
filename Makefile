@@ -6,7 +6,7 @@
 #    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/16 20:02:12 by pbie             ###   ########.fr        #
+#    Updated: 2018/10/16 22:19:42 by pbie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC = main.c \
 		src/paths/construct_paths.c \
 		src/print/print_links.c \
 		src/print/print_path.c \
+		src/traversal/traversal.c \
 		src/utils/errors.c \
 		src/utils/ft_floor.c \
 		src/utils/ft_free_matrix.c \

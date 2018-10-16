@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/16 20:11:22 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/16 22:07:38 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_qv
 {
 	t_room *room;
 	int level;
+	struct s_qv *prev;
 	struct s_qv *next;
 } t_qv;
 
@@ -133,9 +134,12 @@ typedef struct s_h_table
 typedef struct s_data
 {
 	int ants;
+	int ant_num;
+	int end_ants;
 	int num_rooms;
 	char *start;
 	char *end;
+	t_ants_list *moved;
 	t_h_table *map;
 	t_paths *paths;
 } t_data;
@@ -194,5 +198,6 @@ void print_links(t_room *room);
 void print_path(t_qv *path);
 void room_parse(t_parse *p, t_data *data);
 void set_found_command(t_parse *p);
+void traversal(t_data *data);
 
 #endif
