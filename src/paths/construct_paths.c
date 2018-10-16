@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 21:59:23 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 22:04:29 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/16 19:53:50 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void		construct_paths(t_room *end, t_data *data)
 	{
 		parent = tmp_end->end_parent;
 		path = new_link(end, 0);
-		path = add_to_start(path, new_link(parent, 0));
+		add_to_end(path, new_link(parent, 0));
 		while (parent->parent)
 		{
-			path = add_to_start(path, new_link(parent->parent, 0));
+			add_to_end(path, new_link(parent->parent, 0));
 			parent = parent->parent;
 		}
 		data->paths = add_path(data, path);

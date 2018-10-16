@@ -6,7 +6,7 @@
 #    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/09 22:04:20 by pbie             ###   ########.fr        #
+#    Updated: 2018/10/16 20:02:12 by pbie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = lem-in
 CFLAGS = -g -I includes
 
 SRC = main.c \
+		src/bfs/list/add_to_end.c \
 		src/bfs/list/add_to_start.c \
 		src/bfs/list/list_length.c \
 		src/bfs/list/new_link.c \

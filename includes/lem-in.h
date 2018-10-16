@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/10 22:39:48 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/16 20:11:22 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ typedef struct s_qv
 	struct s_qv *next;
 } t_qv;
 
-// typedef struct s_path
-// {
-// 	t_room *room;
-// 	struct s_path *next;
-// } t_path;
+typedef struct s_ants_list
+{
+	t_ant *ant;
+	struct s_ants_list *next;
+} t_ants_list;
 
 typedef struct s_paths
 {
@@ -173,6 +173,7 @@ t_link *l_new(char *key);
 t_room *ht_search(t_h_table *ht, const char *key);
 t_qv *add_to_start(t_qv *head, t_qv *new_link);
 t_qv *new_link(t_room *room, int level);
+void add_to_end(t_qv *head, t_qv *new_link);
 void bfs(t_data *data);
 void construct_paths(t_room *end, t_data *data);
 void error(const char *msg, t_data *data, char *line);
