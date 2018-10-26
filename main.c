@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/16 22:07:54 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/25 13:54:28 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_data *setup_data(void)
 	return (data);
 }
 
-void	free_data(t_data *data)
+void free_data(t_data *data)
 {
 	ht_free_hash_table(data->map);
 	if (data->start)
@@ -57,10 +57,10 @@ int main(void)
 	// print_links(tmp_room);
 	traversal(data);
 	free_data(data);
-	
+
 	// while(1){
 	// 	;
 	// }
-	
+
 	return (0);
 }
