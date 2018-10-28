@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/26 18:14:55 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/28 11:05:30 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ t_ants_list *add_to_moved(t_ants_list *moved, t_ant *ant, t_data *data)
 		// ft_putendl("adding to end of moved list");
 		while (tmp->next)
 		{
+			// ft_putendlnbr("tmp->ant->num", tmp->ant->num);
+			// ft_putendlnbr("ant->num", ant->num);
 			if (tmp->ant->num == ant->num)
 			{
+				// ft_putendl("ant found");
 				tmp->ant->moved = TRUE;
 				return (moved);
 			}
@@ -64,9 +67,21 @@ t_ants_list *add_to_moved(t_ants_list *moved, t_ant *ant, t_data *data)
 		// ft_putendlnbr("ant->moved ", ant->moved);
 		// if (tmp->ant->num > data->ants || tmp->ant->num < 0)
 		// 	ft_exit("ant number problem in add to moved");
-		tmp->next = (t_ants_list *)malloc(sizeof(t_ants_list));
-		tmp->next->ant = ant;
-		tmp->next->next = NULL;
+
+		// ft_putendlnbr("ant->num ", ant->num);
+		// ft_putendlnbr("ant->moved ", ant->moved);
+		if (tmp->ant->num != ant->num)
+		{
+			// ft_putendl("ant NOT found");
+			tmp->next = (t_ants_list *)malloc(sizeof(t_ants_list));
+			tmp->next->ant = ant;
+			tmp->next->next = NULL;
+		}
+		else
+		{
+			tmp->ant->moved = TRUE;
+			// ft_putendl("ant does exist");
+		}
 	}
 	return (moved);
 }
@@ -198,8 +213,8 @@ void move_ants(t_qv *path, t_data *data)
 					tmp_path->room->ant = NULL;
 					tmp_path->room->occupied = FALSE;
 				}
-				if (data->ant_num - 1 == data->ants)
-					finished = TRUE;
+				// if (data->ant_num - 1 == data->ants)
+				// 	finished = TRUE;
 				// ft_putendl("getting here");
 				// ft_putendlnbr("data->end_ants ", data->end_ants);
 				// ft_putendlnbr("data->ant_num ", data->ant_num);
@@ -228,6 +243,8 @@ t_ants_list *clear_moved(t_ants_list *moved, t_data *data)
 		tmp = tmp->next;
 	}
 	tmp->ant->moved = FALSE;
+	// ft_putendlnbr("tmp->ant->num ", tmp->ant->num);
+	// ft_putendlnbr("tmp->ant->moved ", tmp->ant->moved);
 	return (moved);
 }
 
