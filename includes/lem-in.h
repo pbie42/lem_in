@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/16 22:07:38 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/28 18:24:04 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,13 +146,13 @@ typedef struct s_data
 
 typedef struct s_parse
 {
-	char	*line;
-	int		lines;
-	int		rooms;
-	t_bool	ants_done;
-	t_bool	rooms_done;
-	t_bool	start_found;
-	t_bool	end_found;
+	char *line;
+	int lines;
+	int rooms;
+	t_bool ants_done;
+	t_bool rooms_done;
+	t_bool start_found;
+	t_bool end_found;
 } t_parse;
 
 double ft_floor(double x);
@@ -168,7 +168,7 @@ t_bool ft_only_white(char *s);
 t_bool is_ants(char *line, t_data *data);
 t_bool is_command(const char *line);
 t_bool is_comment(char *line);
-t_bool is_link(char* line);
+t_bool is_link(char *line);
 t_bool is_room(const char *line);
 t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);

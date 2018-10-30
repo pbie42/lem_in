@@ -6,13 +6,13 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:41 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/08 11:45:52 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/28 16:48:43 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_bool	is_ants(char *line, t_data *data)
+t_bool is_ants(char *line, t_data *data)
 {
 	int i;
 
@@ -23,9 +23,9 @@ t_bool	is_ants(char *line, t_data *data)
 	return (TRUE);
 }
 
-void	parse_ants(char *line, t_data *data)
+void parse_ants(char *line, t_data *data)
 {
-	int	ants;
+	int ants;
 
 	if (is_ants(line, data))
 	{
@@ -33,7 +33,7 @@ void	parse_ants(char *line, t_data *data)
 		if (ants <= 0)
 			error("ants", data, line);
 		data->ants = ants;
-		ft_putendlnbr("data->ants ", data->ants);
+		// ft_putendlnbr("data->ants ", data->ants);
 	}
 	else
 		error("ants", data, line);

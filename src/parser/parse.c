@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:36:30 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/25 13:54:15 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/29 23:30:58 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static t_bool validate_parse(t_parse *p, t_data *data)
 {
 	if (!p->rooms_done)
 		error("room", data, p->line);
-	ft_putendl("rooms done");
+	// ft_putendl("rooms done");
 	if (p->start_found && !data->start)
 		error("startroom", data, p->line);
 	if (p->end_found && !data->end)
 		error("endroom", data, p->line);
 	if (p->start_found && p->end_found && p->rooms_done)
 		return (TRUE);
-	ft_putendlnbr("p->start_found ", p->start_found);
-	ft_putendlnbr("p->end_found ", p->end_found);
-	ft_putendlnbr("p->rooms_done ", p->rooms_done);
+	// ft_putendlnbr("p->start_found ", p->start_found);
+	// ft_putendlnbr("p->end_found ", p->end_found);
+	// ft_putendlnbr("p->rooms_done ", p->rooms_done);
 	return (FALSE);
 }
 
@@ -49,7 +49,10 @@ static void parse_room_link(t_parse *p, t_data *data)
 	if (!p->ants_done)
 		error("ants", data, p->line);
 	if (!p->rooms_done && is_link(p->line))
+	{
+		ft_putendl("rooms done true");
 		p->rooms_done = TRUE;
+	}
 	if (p->rooms_done)
 	{
 		if (!p->start_found)
@@ -59,13 +62,20 @@ static void parse_room_link(t_parse *p, t_data *data)
 		if (p->rooms_done && p->rooms == 0)
 			error("rooms", data, p->line);
 		if (!is_link(p->line))
+		{
+			ft_putendl("error is link");
 			error("link", data, p->line);
+		}
 		link_parse(p, data);
 	}
 	if (!p->rooms_done && !is_room(p->line))
 		error("room", data, p->line);
 	if (!p->rooms_done)
+	{
+		ft_putendl("about to room parse");
 		room_parse(p, data);
+	}
+	ft_putendl("parse room link done");
 }
 
 void parse(t_data *data)
@@ -75,7 +85,7 @@ void parse(t_data *data)
 	p = NULL;
 	p = setup_parse();
 	data->map = ht_new();
-	ft_putendl("in parse");
+	// ft_putendl("in parse");
 	while (ft_get_next_line(0, &p->line) == 1)
 	{
 		ft_putendl(p->line);
@@ -90,12 +100,13 @@ void parse(t_data *data)
 		}
 		else
 			parse_room_link(p, data);
+		ft_putendl("about to free line");
 		free(p->line);
 		p->lines++;
 	}
 	if (p->lines <= 0)
 		error("empty", data, NULL);
-	ft_putendl("about to validate parse");
+	// ft_putendl("about to validate parse");
 	validate_parse(p, data);
 	free(p->line);
 	free(p);

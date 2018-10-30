@@ -6,13 +6,13 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 21:59:23 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/16 21:04:47 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/28 18:25:33 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-void		free_print_path(t_qv *path)
+void free_print_path(t_qv *path)
 {
 	t_qv *tmp;
 	t_qv *tmp2;
@@ -28,7 +28,7 @@ void		free_print_path(t_qv *path)
 
 t_paths *new_path(t_qv *path)
 {
-	t_paths	*tmp;
+	t_paths *tmp;
 
 	tmp = (t_paths *)malloc(sizeof(t_paths));
 	tmp->next = NULL;
@@ -51,16 +51,16 @@ t_paths *add_path(t_data *data, t_qv *path)
 	return (data->paths);
 }
 
-void		construct_paths(t_room *end, t_data *data)
+void construct_paths(t_room *end, t_data *data)
 {
-	t_qv	*path;
-	t_paths	*tmp_paths;
+	t_qv *path;
+	t_paths *tmp_paths;
 	t_room *tmp_end;
 	t_room *parent;
 
 	tmp_end = end;
 	if (!end)
-		return ;
+		return;
 	int i = 0;
 	while (tmp_end->end_parent)
 	{
@@ -78,6 +78,7 @@ void		construct_paths(t_room *end, t_data *data)
 		tmp_end = tmp_end->end_parent;
 	}
 	tmp_paths = data->paths;
+	ft_putchar('\n');
 	while (tmp_paths)
 	{
 		print_path(tmp_paths->path);

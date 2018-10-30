@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/28 11:05:30 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/28 17:40:36 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,42 @@ t_ant *new_ant(t_data *data)
 	return (new_ant);
 }
 
+t_ants_list *remove_from_moved(t_ants_list *moved, int ant_num)
+{
+	t_ants_list *tmp_list;
+	t_ants_list *tmp;
+	t_ant *tmp_ant;
+
+	tmp_list = moved;
+	if (tmp_list->ant->num == ant_num)
+	{
+		tmp = tmp_list;
+		moved = tmp_list->next;
+		free(tmp->ant);
+		free(tmp);
+		return (moved);
+	}
+	while (tmp_list->next)
+	{
+		if (tmp_list->next->ant->num == ant_num)
+		{
+			tmp = tmp_list->next;
+			tmp_list->next = tmp_list->next->next;
+			free(tmp->ant);
+			free(tmp);
+			return (moved);
+		}
+		tmp_list = tmp_list->next;
+	}
+	return (moved);
+}
+
 void move_ants(t_qv *path, t_data *data)
 {
 	t_qv *tmp_path;
 	t_ant *tmp_ant;
 	t_bool finished;
+	int ant_num;
 
 	tmp_path = path;
 	tmp_ant = NULL;
@@ -193,7 +224,7 @@ void move_ants(t_qv *path, t_data *data)
 				if (!ft_strcmp(tmp_path->prev->room->name, data->end))
 				{
 					// ft_putendl("not moved end room");
-					// tmp_ant = tmp_path->room->ant;
+					ant_num = tmp_path->room->ant->num;
 					// if (tmp_ant->num > data->ants || tmp_ant->num < 0)
 					// 	ft_exit("WE GOT A PROBLEM BOSS");
 					// free(tmp_ant);
@@ -201,6 +232,7 @@ void move_ants(t_qv *path, t_data *data)
 					tmp_path->prev->room->occupied = FALSE;
 					tmp_path->room->ant = NULL;
 					tmp_path->room->occupied = FALSE;
+					data->moved = remove_from_moved(data->moved, ant_num);
 					data->end_ants++;
 				}
 				else
@@ -280,8 +312,8 @@ void traversal(t_data *data)
 		// ft_putendlnbr("data->ants ", data->ants);
 		// ft_putendlnbr("data->end_ants ", data->end_ants);
 		// ft_putendlnbr("data->ant_num ", data->ant_num);
-
-		data->moved = clear_moved(data->moved, data);
+		if (data->moved)
+			data->moved = clear_moved(data->moved, data);
 		// ft_putendl("cleared moved");
 		ft_putchar('\n');
 		i++;
