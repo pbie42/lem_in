@@ -26,6 +26,7 @@ t_data *setup_data(void)
 	data->end = NULL;
 	data->map = NULL;
 	data->paths = NULL;
+	data->rooms = NULL;
 	return (data);
 }
 
@@ -34,21 +35,22 @@ void free_data(t_data *data)
 	t_ants_list *tmp_ant_list;
 	t_qv *tmp_qv;
 	t_paths *tmp_path;
+	t_qv *tmp_rooms;
 
-	ht_free_hash_table(data->map);
-	// ft_putendl("freed hash table");
+	while (data->rooms)
+	{
+		tmp_rooms = data->rooms;
+		data->rooms = data->rooms->next;
+		free(tmp_rooms->room->name);
+		l_free(tmp_rooms->room->link);
+		free(tmp_rooms->room);
+		free(tmp_rooms);
+	}
+	free(data->rooms);
 	if (data->start)
 		free(data->start);
 	if (data->end)
 		free(data->end);
-	// free(data->map);
-	// while (data->moved)
-	// {
-	// 	tmp_ant_list = data->moved;
-	// 	data->moved = data->moved->next;
-	// 	free(tmp_ant_list);
-	// }
-	// free(data->moved);
 	while (data->paths)
 	{
 		tmp_path = data->paths;
@@ -77,14 +79,9 @@ int main(void)
 		ft_putendl("data is null");
 	parse(data);
 	bfs(data);
-	construct_paths(ht_search(data->map, data->end), data);
-	// ft_putendl("about to print links");
-	// tmp_room = ht_search(data->map, data->start);
-	// print_links(tmp_room);
+	construct_paths(find_room(data->rooms, data->end), data);
 	traversal(data);
-	// ft_putendl("traversal done");
 	free_data(data);
-
 	// while(1){
 	// 	;
 	// }

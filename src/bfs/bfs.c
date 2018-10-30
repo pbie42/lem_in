@@ -81,8 +81,8 @@ void			bfs(t_data *data)
 	t_bool	end_found;
 
 	bfs = (t_bfs *)malloc(sizeof(t_bfs));
-	bfs->s_que = new_link(ht_search(data->map, data->start), 0);
-	tmp_room = ht_search(data->map, data->start);
+	bfs->s_que = new_link(find_room(data->rooms, data->start), 0);
+	tmp_room = find_room(data->rooms, data->start);
 	tmp_room->visited = TRUE;
 	end_found = FALSE;
 	while (bfs->s_que)
@@ -90,7 +90,7 @@ void			bfs(t_data *data)
 		bfs->links = bfs->s_que->room->link;
 		while (bfs->links)
 		{
-			tmp_room = ht_search(data->map, bfs->links->key);
+			tmp_room = find_room(data->rooms, bfs->links->key);
 			if (!tmp_room->visited)
 			{
 				if (!ft_strcmp(tmp_room->name, data->end))
@@ -114,5 +114,4 @@ void			bfs(t_data *data)
 		path_error("end", data, bfs);
 	free(bfs->s_que);
 	free(bfs);
-	ft_putendl("about to print paths");
 }

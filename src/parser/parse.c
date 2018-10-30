@@ -49,10 +49,7 @@ static void parse_room_link(t_parse *p, t_data *data)
 	if (!p->ants_done)
 		error("ants", data, p->line);
 	if (!p->rooms_done && is_link(p->line))
-	{
-		ft_putendl("rooms done true");
 		p->rooms_done = TRUE;
-	}
 	if (p->rooms_done)
 	{
 		if (!p->start_found)
@@ -62,20 +59,13 @@ static void parse_room_link(t_parse *p, t_data *data)
 		if (p->rooms_done && p->rooms == 0)
 			error("rooms", data, p->line);
 		if (!is_link(p->line))
-		{
-			ft_putendl("error is link");
 			error("link", data, p->line);
-		}
 		link_parse(p, data);
 	}
 	if (!p->rooms_done && !is_room(p->line))
 		error("room", data, p->line);
 	if (!p->rooms_done)
-	{
-		ft_putendl("about to room parse");
 		room_parse(p, data);
-	}
-	ft_putendl("parse room link done");
 }
 
 void parse(t_data *data)
@@ -84,7 +74,7 @@ void parse(t_data *data)
 
 	p = NULL;
 	p = setup_parse();
-	data->map = ht_new();
+	// data->map = ht_new();
 	// ft_putendl("in parse");
 	while (ft_get_next_line(0, &p->line) == 1)
 	{

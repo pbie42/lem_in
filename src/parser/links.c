@@ -66,8 +66,10 @@ void link_parse(t_parse *p, t_data *data)
 	linked_room = NULL;
 	new_link = NULL;
 	link = ft_strsplit(p->line, '-');
-	room = ht_search(data->map, link[0]);
-	linked_room = ht_search(data->map, link[1]);
+	// room = ht_search(data->map, link[0]);
+	room = find_room(data->rooms, link[0]);
+	// linked_room = ht_search(data->map, link[1]);
+	linked_room = find_room(data->rooms, link[1]);
 	if (!room || !linked_room)
 	{
 		ft_putendl("3");

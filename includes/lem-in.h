@@ -142,6 +142,7 @@ typedef struct s_data
 	t_ants_list *moved;
 	t_h_table *map;
 	t_paths *paths;
+	t_qv *rooms;
 } t_data;
 
 typedef struct s_parse
@@ -175,6 +176,7 @@ t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
 t_link *l_new(char *key);
 t_room *ht_search(t_h_table *ht, const char *key);
+t_room *find_room(t_qv *rooms, char *key);
 t_qv *add_to_start(t_qv *head, t_qv *new_link);
 t_qv *new_link(t_room *room, int level);
 void add_to_end(t_qv *head, t_qv *new_link);
