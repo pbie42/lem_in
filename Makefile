@@ -6,7 +6,7 @@
 #    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/30 18:58:21 by paul             ###   ########.fr        #
+#    Updated: 2018/10/30 19:08:42 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = main.c \
 		src/bfs/list/list_length.c \
 		src/bfs/list/new_link.c \
 		src/bfs/bfs.c \
+		src/bfs/queue.c \
 		src/parser/ants.c \
 		src/parser/commands.c \
 		src/parser/comments.c \

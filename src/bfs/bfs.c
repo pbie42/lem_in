@@ -3,110 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:26:35 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/09 21:14:11 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 19:41:30 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_qv		*which_queue(t_qv *start, t_qv *end)
-{
-	int	s_len;
-	int	e_len;
-
-	s_len = list_length(start);
-	e_len = list_length(end);
-	if (s_len >= e_len)
-		return (start);
-	return (end);
-}
-
-t_qv		*remove_from_queue(t_qv *start)
-{
-	t_qv	*tmp;
-
-	if (!start)
-		return (NULL);
-	if (start->next)
-	{
-		tmp = start;
-		start = start->next;
-		free(tmp);
-		return (start);
-	}
-	start->room = NULL;
-	start->next = NULL;
-	free (start);
-	return (NULL);
-}
-
-void		add_to_q(t_qv *start, t_qv *new_link)
-{
-	t_qv	*tmp;
-
-	tmp = start;
-	while(tmp->next)
-		tmp = tmp->next;
-	tmp->next = new_link;
-}
-
-void		add_end_parent(t_room *end, t_room *parent)
+static void		add_end_parent(t_bfs *bfs)
 {
 	t_room *tmp;
-	if (!end->end_parent)
-		end->end_parent = parent;
+
+	bfs->end_found = TRUE;
+	if (!bfs->tmp_room->end_parent)
+		bfs->tmp_room->end_parent = bfs->s_que->room;
 	else
 	{
-		tmp = end;
+		tmp = bfs->tmp_room;
 		while (tmp->end_parent)
 			tmp = tmp->end_parent;
-		tmp->end_parent = parent;
+		tmp->end_parent = bfs->s_que->room;
 	}
-	tmp = end;
+	tmp = bfs->tmp_room;
 	while (tmp->end_parent)
 		tmp = tmp->end_parent;
+}
+
+static void handle_add_q(t_bfs *bfs)
+{
+	bfs->tmp_room->visited = TRUE;
+	bfs->tmp_room->parent = bfs->s_que->room;
+	add_to_q(bfs->s_que, new_link(bfs->tmp_room, bfs->s_que->level + 1));
+}
+
+static t_bfs *setup_bfs(t_data *data)
+{
+	t_bfs *bfs;
+
+	bfs = (t_bfs *)malloc(sizeof(t_bfs));
+	bfs->s_que = new_link(find_room(data->rooms, data->start), 0);
+	bfs->tmp_room = find_room(data->rooms, data->start);
+	bfs->tmp_room->visited = TRUE;
+	bfs->end_found = FALSE;
+	return (bfs);
 }
 
 void			bfs(t_data *data)
 {
 	t_bfs		*bfs;
-	t_room	*tmp_room;
-	t_bool	end_found;
 
-	bfs = (t_bfs *)malloc(sizeof(t_bfs));
-	bfs->s_que = new_link(find_room(data->rooms, data->start), 0);
-	tmp_room = find_room(data->rooms, data->start);
-	tmp_room->visited = TRUE;
-	end_found = FALSE;
+	bfs = setup_bfs(data);
 	while (bfs->s_que)
 	{
 		bfs->links = bfs->s_que->room->link;
 		while (bfs->links)
 		{
-			tmp_room = find_room(data->rooms, bfs->links->key);
-			if (!tmp_room->visited)
+			bfs->tmp_room = find_room(data->rooms, bfs->links->key);
+			if (!bfs->tmp_room->visited)
 			{
-				if (!ft_strcmp(tmp_room->name, data->end))
-				{
-					end_found = TRUE;
-					add_end_parent(tmp_room, bfs->s_que->room);
-				}
+				if (!ft_strcmp(bfs->tmp_room->name, data->end))
+					add_end_parent(bfs);
 				else
-				{
-					tmp_room->visited = TRUE;
-					tmp_room->parent = bfs->s_que->room;
-					add_to_q(bfs->s_que, new_link(tmp_room, bfs->s_que->level + 1));
-				}
+					handle_add_q(bfs);
 			}
-			tmp_room = NULL;
+			bfs->tmp_room = NULL;
 			bfs->links = bfs->links->next;
 		}
 		bfs->s_que = remove_from_queue(bfs->s_que);
 	}
-	if (!end_found)
+	if (!bfs->end_found)
 		path_error("end", data, bfs);
 	free(bfs->s_que);
 	free(bfs);

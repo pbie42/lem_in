@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 18:57:40 by paul             ###   ########.fr       */
+/*   Updated: 2018/10/30 19:26:29 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ typedef struct s_bfs
 	t_qv *s_que;
 	t_qv *e_vis;
 	t_qv *e_que;
+	t_room *tmp_room;
+	t_bool end_found;
 	t_link *links;
 } t_bfs;
 
@@ -171,7 +173,10 @@ t_link *l_new(char *key);
 t_room *find_room(t_qv *rooms, char *key);
 t_qv *add_to_start(t_qv *head, t_qv *new_link);
 t_qv *new_link(t_room *room, int level);
+t_qv *remove_from_queue(t_qv *start);
+t_qv *which_queue(t_qv *start, t_qv *end);
 void add_to_end(t_qv *head, t_qv *new_link);
+void add_to_q(t_qv *start, t_qv *new_link);
 void bfs(t_data *data);
 void construct_paths(t_room *end, t_data *data);
 void error(const char *msg, t_data *data, char *line);
