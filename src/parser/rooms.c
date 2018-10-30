@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 17:42:37 by paul             ###   ########.fr       */
+/*   Updated: 2018/10/30 21:00:28 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ void room_parse(t_parse *p, t_data *data)
 		end = TRUE;
 		data->end = ft_strdup(s_room[0]);
 	}
-	data->rooms = add_room_to_list(data->rooms, setup_room(s_room[0], start, end));
+	room = setup_room(s_room[0], start, end);
+	data->rooms = add_room_to_list(data->rooms, room);
 	ft_free_matrix(s_room);
 	p->rooms++;
 }
