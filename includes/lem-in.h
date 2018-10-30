@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 15:49:03 by paul             ###   ########.fr       */
+/*   Updated: 2018/10/30 18:26:04 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,13 @@ typedef struct s_parse
 	t_bool end_found;
 } t_parse;
 
+typedef struct s_move
+{
+	t_qv *tmp_path;
+	int print_space;
+	t_bool moved_an_ant;
+} t_move;
+
 double ft_floor(double x);
 double ft_sqroot(double square);
 int ft_is_prime(const int x);
@@ -164,6 +171,9 @@ int ht_get_hash(const char *s, const int buckets, const int attempt);
 int ht_hash(const char *s, const int a, const int m);
 int list_length(t_qv *list);
 long int ft_pow(int x, int n);
+t_ants_list *add_to_moved(t_ants_list *moved, t_ant *ant, t_data *data);
+t_ants_list *remove_from_moved(t_ants_list *moved, int ant_num);
+t_ants_list *clear_moved(t_ants_list *moved, t_data *data);
 t_bool ft_is_num(const char *string);
 t_bool ft_only_white(char *s);
 t_bool is_ants(char *line, t_data *data);
@@ -171,6 +181,7 @@ t_bool is_command(const char *line);
 t_bool is_comment(char *line);
 t_bool is_link(char *line);
 t_bool is_room(const char *line);
+t_bool move_ants(t_qv *path, t_data *data);
 t_h_item *ht_new_item(const char *k, t_room *v);
 t_h_table *ht_new(void);
 t_h_table *ht_new_sized(const int base_size);
@@ -185,6 +196,8 @@ void construct_paths(t_room *end, t_data *data);
 void error(const char *msg, t_data *data, char *line);
 void error_empty();
 void ft_free_matrix(char **matrix);
+void handle_move(t_move *m, t_data *data);
+void handle_start(t_move *m, t_data *data);
 void ht_free_hash_table(t_h_table *ht);
 void ht_free_item(t_h_item *i);
 void ht_insert(t_h_table *ht, const char *key, t_room *value);

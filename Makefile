@@ -6,7 +6,7 @@
 #    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/30 15:49:12 by paul             ###   ########.fr        #
+#    Updated: 2018/10/30 18:26:26 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ SRC = main.c \
 		src/print/print_links.c \
 		src/print/print_move.c \
 		src/print/print_path.c \
+		src/traversal/movement/move_ants.c \
+		src/traversal/movement/move_handlers.c \
+		src/traversal/movement/moved.c \
 		src/traversal/traversal.c \
 		src/utils/errors.c \
 		src/utils/ft_floor.c \

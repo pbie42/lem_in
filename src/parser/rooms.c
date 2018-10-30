@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rooms.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/29 23:29:26 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 17:42:37 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_qv *add_room_to_list(t_qv *rooms, t_room *room)
 		rooms = malloc(sizeof(t_qv));
 		rooms->room = room;
 		rooms->prev = NULL;
+		rooms->next = NULL;
 		rooms->level = 0;
 		return (rooms);
 	}
@@ -100,6 +101,7 @@ void room_parse(t_parse *p, t_data *data)
 	t_bool end;
 
 	start = FALSE;
+	end = FALSE;
 	s_room = ft_strsplit(p->line, ' ');
 	if (p->start_found && !data->start)
 	{
