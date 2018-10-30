@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 21:59:23 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 16:47:01 by paul             ###   ########.fr       */
+/*   Updated: 2018/10/30 21:09:09 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,21 @@ t_paths *add_path(t_data *data, t_qv *path)
 	return (data->paths);
 }
 
+void print_paths(t_paths *paths)
+{
+	t_paths *tmp_paths;
+
+	tmp_paths = paths;
+	while (tmp_paths)
+	{
+		print_path(tmp_paths->path);
+		tmp_paths = tmp_paths->next;
+	}
+}
+
 void construct_paths(t_room *end, t_data *data)
 {
 	t_qv *path;
-	t_paths *tmp_paths;
 	t_room *tmp_end;
 	t_room *parent;
 
@@ -73,15 +84,8 @@ void construct_paths(t_room *end, t_data *data)
 			parent = parent->parent;
 		}
 		data->paths = add_path(data, path);
-		// free_print_path(path);
 		path = NULL;
 		tmp_end = tmp_end->end_parent;
 	}
-	tmp_paths = data->paths;
 	ft_putchar('\n');
-	// while (tmp_paths)
-	// {
-	// 	print_path(tmp_paths->path);
-	// 	tmp_paths = tmp_paths->next;
-	// }
 }
