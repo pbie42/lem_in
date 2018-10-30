@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 15:50:26 by paul             ###   ########.fr       */
+/*   Updated: 2018/10/30 16:41:44 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,18 @@ t_ants_list *remove_from_moved(t_ants_list *moved, int ant_num)
 	return (moved);
 }
 
-void move_ants(t_qv *path, t_data *data)
+t_bool move_ants(t_qv *path, t_data *data)
 {
 	t_qv *tmp_path;
 	t_ant *tmp_ant;
 	int ant_num;
+	int test;
+	t_bool moved_an_ant;
 
 	tmp_path = path;
 	tmp_ant = NULL;
+	test = 0;
+	moved_an_ant = FALSE;
 	while (tmp_path)
 	{
 		if ((tmp_path->room->occupied ||
@@ -112,14 +116,22 @@ void move_ants(t_qv *path, t_data *data)
 				data->ant_num <= data->ants)
 			{
 				tmp_path->prev->room->ant = new_ant(data);
+				if (test != 0)
+					ft_putchar(' ');
+				test++;
 				print_move(tmp_path->prev->room->ant->num, tmp_path->prev->room->name);
 				data->moved = add_to_moved(data->moved, tmp_path->prev->room->ant, data);
+				moved_an_ant = TRUE;
 				tmp_path->prev->room->occupied = TRUE;
 			}
 			else if (tmp_path->room->ant && !tmp_path->room->ant->moved)
 			{
 				data->moved = add_to_moved(data->moved, tmp_path->room->ant, data);
+				if (test != 0)
+					ft_putchar(' ');
+				test++;
 				print_move(tmp_path->room->ant->num, tmp_path->prev->room->name);
+				moved_an_ant = TRUE;
 				if (!ft_strcmp(tmp_path->prev->room->name, data->end))
 				{
 					ant_num = tmp_path->room->ant->num;
@@ -141,6 +153,7 @@ void move_ants(t_qv *path, t_data *data)
 		}
 		tmp_path = tmp_path->next;
 	}
+	return (moved_an_ant);
 }
 
 t_ants_list *clear_moved(t_ants_list *moved, t_data *data)
@@ -161,14 +174,21 @@ t_ants_list *clear_moved(t_ants_list *moved, t_data *data)
 void traversal(t_data *data)
 {
 	t_paths *tmp_paths;
+	int test;
+	t_bool moved;
 
 	while (data->end_ants < data->ants)
 	{
 		tmp_paths = data->paths;
+		test = 0;
+		moved = FALSE;
 		while (tmp_paths)
 		{
-			move_ants(tmp_paths->path, data);
+			if (test != 0 && moved)
+				ft_putchar(' ');
+			moved = move_ants(tmp_paths->path, data);
 			tmp_paths = tmp_paths->next;
+			test++;
 		}
 		if (data->moved)
 			data->moved = clear_moved(data->moved, data);
