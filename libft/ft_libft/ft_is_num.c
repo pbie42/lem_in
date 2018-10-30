@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_only_white.c                                    :+:      :+:    :+:   */
+/*   ft_is_num.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 17:31:57 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/08 11:49:12 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/05 16:20:31 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/30 21:21:42 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "libftprintf.h"
 
-t_bool	ft_only_white(char *s)
+t_bool		ft_is_num(const char *string)
 {
-	int	i;
+	int		i;
 
 	i = -1;
-	while (s[++i])
-	{
-		if (s[i] == ' ' || s[i] == '\t' || s[i] == '\r' || s[i] == '\v'
-		|| s[i] == '\f' || s[i] == '\n')
-			;
-		else
+	if (string[0] == '-' && string[1] && ft_isdigit(string[1]))
+		i++;
+	while (string[++i])
+		if (!ft_isdigit(string[i]))
 			return (FALSE);
-	}
 	return (TRUE);
 }

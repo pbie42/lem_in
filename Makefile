@@ -6,7 +6,7 @@
 #    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/30 19:08:42 by paul             ###   ########.fr        #
+#    Updated: 2018/10/30 21:38:30 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,7 @@ SRC = main.c \
 		src/traversal/movement/moved.c \
 		src/traversal/traversal.c \
 		src/utils/errors.c \
-		src/utils/ft_floor.c \
 		src/utils/ft_free_matrix.c \
-		src/utils/ft_is_num.c \
-		src/utils/ft_only_white.c \
-		src/utils/ft_pow.c \
-		src/utils/ft_prime.c \
-		src/utils/ft_sqroot.c \
 		src/utils/list/l_add_end.c \
 		src/utils/list/l_free.c \
 		src/utils/list/l_new.c

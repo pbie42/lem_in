@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sqroot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 19:05:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 11:19:01 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 21:22:04 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "libftprintf.h"
 
 double	ft_sqroot(double square)
 {

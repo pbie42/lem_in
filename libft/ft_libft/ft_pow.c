@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_floor.c                                         :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 11:15:08 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 11:15:33 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/04 11:16:04 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/30 21:21:56 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "libftprintf.h"
 
-double	ft_floor(double x)
+long int	ft_pow(int x, int n)
 {
-	if (x > 0)
-		return ((int)x);
-	return ((int)(x - 0.9999999999999999));
+	int i;
+	int number;
+
+	i = 0;
+	number = 0;
+	while (i < n)
+	{
+		number *= x;
+		i++;
+	}
+	return (number);
 }

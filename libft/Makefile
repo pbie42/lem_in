@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pbie <marvin@42.fr>                        +#+  +:+       +#+         #
+#    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/30 18:33:46 by pbie              #+#    #+#              #
-#    Updated: 2016/02/12 16:32:13 by pbie             ###   ########.fr        #
+#    Updated: 2018/10/30 21:38:20 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,26 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_char_swap.c \
 		ft_libft/ft_check_white.c \
 		ft_libft/ft_exit.c \
+		ft_libft/ft_floor.c \
 		ft_libft/ft_get_next_line.c \
 		ft_libft/ft_includes_char.c \
+		ft_libft/ft_is_num.c \
+		ft_libft/ft_is_prime.c \
 		ft_libft/ft_isalnum.c \
 		ft_libft/ft_isalpha.c \
 		ft_libft/ft_isascii.c \
 		ft_libft/ft_isdigit.c \
+		ft_libft/ft_islower.c \
 		ft_libft/ft_isprint.c \
+		ft_libft/ft_isupper.c \
 		ft_libft/ft_itoa.c \
+		ft_libft/ft_lstadd.c \
+		ft_libft/ft_lstaddend.c \
+		ft_libft/ft_lstdel.c \
+		ft_libft/ft_lstdelone.c \
+		ft_libft/ft_lstiter.c \
+		ft_libft/ft_lstmap.c \
+		ft_libft/ft_lstnew.c \
 		ft_libft/ft_memalloc.c \
 		ft_libft/ft_memccpy.c \
 		ft_libft/ft_memchr.c \
@@ -36,16 +48,21 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_memdel.c \
 		ft_libft/ft_memmove.c \
 		ft_libft/ft_memset.c \
+		ft_libft/ft_next_prime.c \
 		ft_libft/ft_non_white.c \
+		ft_libft/ft_only_white.c \
+		ft_libft/ft_pow.c \
 		ft_libft/ft_putchar.c \
 		ft_libft/ft_putchar_fd.c \
 		ft_libft/ft_putendl.c \
-		ft_libft/ft_putendlnbr.c \
 		ft_libft/ft_putendl_fd.c \
+		ft_libft/ft_putendlnbr.c \
 		ft_libft/ft_putnbr.c \
 		ft_libft/ft_putnbr_fd.c \
 		ft_libft/ft_putstr.c \
 		ft_libft/ft_putstr_fd.c \
+		ft_libft/ft_putstrtab.c \
+		ft_libft/ft_sqroot.c \
 		ft_libft/ft_strcat.c \
 		ft_libft/ft_strchr.c \
 		ft_libft/ft_strclr.c \
@@ -57,42 +74,32 @@ SRC = ft_libft/ft_atoi.c \
 		ft_libft/ft_striter.c \
 		ft_libft/ft_striteri.c \
 		ft_libft/ft_strjoin.c \
-		ft_libft/ft_strnjoin.c \
 		ft_libft/ft_strlcat.c \
 		ft_libft/ft_strlen.c \
+		ft_libft/ft_strlower.c \
 		ft_libft/ft_strmap.c \
 		ft_libft/ft_strmapi.c \
 		ft_libft/ft_strncat.c \
 		ft_libft/ft_strncmp.c \
 		ft_libft/ft_strncpy.c \
+		ft_libft/ft_strndup.c \
 		ft_libft/ft_strnequ.c \
 		ft_libft/ft_strnew.c \
+		ft_libft/ft_strnjoin.c \
 		ft_libft/ft_strnstr.c \
 		ft_libft/ft_strrchr.c \
+		ft_libft/ft_strrev.c \
 		ft_libft/ft_strsplit.c \
 		ft_libft/ft_strstr.c \
 		ft_libft/ft_strsub.c \
 		ft_libft/ft_strtrim.c \
+		ft_libft/ft_strupper.c \
+		ft_libft/ft_swap.c \
+		ft_libft/ft_tablen.c \
 		ft_libft/ft_tolower.c \
 		ft_libft/ft_toupper.c \
-		ft_libft/ft_lstadd.c \
-		ft_libft/ft_lstdel.c \
-		ft_libft/ft_lstdelone.c \
-		ft_libft/ft_lstiter.c \
-		ft_libft/ft_lstnew.c \
-		ft_libft/ft_lstmap.c \
-		ft_libft/ft_lstaddend.c \
-		ft_libft/ft_islower.c \
-		ft_libft/ft_isupper.c \
-		ft_libft/ft_swap.c \
 		ft_libft/ft_wordcount.c \
-		ft_libft/ft_strndup.c \
-		ft_libft/ft_putstrtab.c \
-		ft_libft/ft_tablen.c \
 		ft_printf/ft_printf.c \
-		ft_libft/ft_strlower.c \
-		ft_libft/ft_strrev.c \
-		ft_libft/ft_strupper.c \
 		ft_printf/output/utils/ft_ws_strcmp.c \
 		ft_printf/output/utils/ft_ws_width.c \
 		ft_printf/output/utils/get_int_type.c \

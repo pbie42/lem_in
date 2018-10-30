@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:25:33 by pbie              #+#    #+#             */
-/*   Updated: 2018/01/03 12:57:31 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 21:37:40 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define INVCYAN "\033[7;36m"
 # define INVRED "\033[7;31m"
 # define INVMAGENTA "\033[7;35m"
+# define MINDIFF 2.25e-308
 
 # include <inttypes.h>
 # include <string.h>
@@ -272,7 +273,14 @@ t_bool				ft_not_conversion_space(char c);
 int					ft_ws_strcmp(const wchar_t *s1, const wchar_t *s2);
 int					ft_ws_width(wchar_t *ws);
 int					print_zero_space_ws(t_pf_item *pfi, int width);
+int					ft_next_prime(int x);
+int					ft_is_prime(const int x);
 char				*oct_malloc(char *str);
 char				*oct_change(t_pf_item *pfi, intmax_t n);
+double	ft_floor(double x);
+t_bool		ft_is_num(const char *string);
+t_bool	ft_only_white(char *s);
+long int	ft_pow(int x, int n);
+double	ft_sqroot(double square);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 19:26:29 by paul             ###   ########.fr       */
+/*   Updated: 2018/10/30 21:22:54 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
 #define INVMAGENTA "\033[7;35m"
 #define HT_PRIME_1 151
 #define HT_PRIME_2 163
-#define MINDIFF 2.25e-308
 #define HT_INITIAL_BASE_SIZE 53
 
 #include <unistd.h>

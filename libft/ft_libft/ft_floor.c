@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_num.c                                        :+:      :+:    :+:   */
+/*   ft_floor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 16:20:31 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/05 16:20:32 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/04 11:15:08 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/30 21:21:35 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "libftprintf.h"
 
-t_bool		ft_is_num(const char *string)
+double	ft_floor(double x)
 {
-	int		i;
-
-	i = -1;
-	if (string[0] == '-' && string[1] && ft_isdigit(string[1]))
-		i++;
-	while (string[++i])
-		if (!ft_isdigit(string[i]))
-			return (FALSE);
-	return (TRUE);
+	if (x > 0)
+		return ((int)x);
+	return ((int)(x - 0.9999999999999999));
 }

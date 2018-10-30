@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*   ft_only_white.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 11:16:04 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/04 11:17:09 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/04 17:31:57 by pbie              #+#    #+#             */
+/*   Updated: 2018/10/30 21:21:50 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "libftprintf.h"
 
-long int	ft_pow(int x, int n)
+t_bool	ft_only_white(char *s)
 {
-	int i;
-	int number;
+	int	i;
 
-	i = 0;
-	number = 0;
-	while (i < n)
+	i = -1;
+	while (s[++i])
 	{
-		number *= x;
-		i++;
+		if (s[i] == ' ' || s[i] == '\t' || s[i] == '\r' || s[i] == '\v'
+		|| s[i] == '\f' || s[i] == '\n')
+			;
+		else
+			return (FALSE);
 	}
-	return (number);
+	return (TRUE);
 }
