@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 15:35:19 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/28 18:05:38 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 18:55:01 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,14 @@ void empty_line(char *line)
 {
 	if (ft_only_white(line))
 	{
-		ft_putendl("about to free line only white");
 		free(line);
 		ft_exit("Error Occurred: Empty Line Given!");
 	}
-	ft_putendl("about to free line empy line");
 	free(line);
 }
 
 void error(const char *msg, t_data *data, char *line)
 {
-	ft_putendl("in error");
 	if (!ft_strcmp(msg, "empty"))
 		ft_exit("Error Occurred: Empty Map!");
 	if (!ft_strcmp(msg, "ants"))
