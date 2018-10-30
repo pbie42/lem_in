@@ -67,11 +67,7 @@ void		add_end_parent(t_room *end, t_room *parent)
 	}
 	tmp = end;
 	while (tmp->end_parent)
-	{
-		ft_putstr("end parent: ");
-		ft_putendl(tmp->end_parent->name);
 		tmp = tmp->end_parent;
-	}
 }
 
 void			bfs(t_data *data)

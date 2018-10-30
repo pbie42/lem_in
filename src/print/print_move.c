@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_matrix.c                                   :+:      :+:    :+:   */
+/*   print_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 17:39:18 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/28 17:59:12 by pbie             ###   ########.fr       */
+/*   Created: 2018/10/30 15:47:34 by paul              #+#    #+#             */
+/*   Updated: 2018/10/30 15:48:44 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-void ft_free_matrix(char **matrix)
+void print_move(int ant_num, char *room_name)
 {
-	int i;
-
-	i = -1;
-	while (matrix[++i])
-		free(matrix[i]);
-	free(matrix);
+	ft_putchar('L');
+	ft_putnbr(ant_num);
+	ft_putchar('-');
+	ft_putstr(room_name);
+	ft_putchar(' ');
 }

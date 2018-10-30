@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+         #
+#    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/16 22:19:42 by pbie             ###   ########.fr        #
+#    Updated: 2018/10/30 15:49:12 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC = main.c \
 		src/parser/rooms.c \
 		src/paths/construct_paths.c \
 		src/print/print_links.c \
+		src/print/print_move.c \
 		src/print/print_path.c \
 		src/traversal/traversal.c \
 		src/utils/errors.c \

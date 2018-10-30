@@ -25,13 +25,10 @@ t_bool is_link(char *line)
 	link = ft_strsplit(line, '-');
 	if (link[1][0] == 'L')
 	{
-		ft_putendl("1");
 		ft_free_matrix(link);
 		return (FALSE);
 	}
-	ft_putendl("2");
 	ft_free_matrix(link);
-	ft_putendl("returning true");
 	return (TRUE);
 }
 
@@ -72,7 +69,6 @@ void link_parse(t_parse *p, t_data *data)
 	linked_room = find_room(data->rooms, link[1]);
 	if (!room || !linked_room)
 	{
-		ft_putendl("3");
 		ft_free_matrix(link);
 		return;
 	}
@@ -93,6 +89,5 @@ void link_parse(t_parse *p, t_data *data)
 		free(new_link->key);
 		free(new_link);
 	}
-	ft_putendl("4");
 	ft_free_matrix(link);
 }

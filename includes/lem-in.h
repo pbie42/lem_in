@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem-in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/28 18:24:04 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 15:49:03 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ void parse();
 void parse_ants(char *line, t_data *data);
 void path_error(const char *msg, t_data *data, t_bfs *bfs);
 void print_links(t_room *room);
+void print_move(int ant_num, char *room_name);
 void print_path(t_qv *path);
 void room_parse(t_parse *p, t_data *data);
 void set_found_command(t_parse *p);

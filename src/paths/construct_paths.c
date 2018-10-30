@@ -79,9 +79,9 @@ void construct_paths(t_room *end, t_data *data)
 	}
 	tmp_paths = data->paths;
 	ft_putchar('\n');
-	while (tmp_paths)
-	{
-		print_path(tmp_paths->path);
-		tmp_paths = tmp_paths->next;
-	}
+	// while (tmp_paths)
+	// {
+	// 	print_path(tmp_paths->path);
+	// 	tmp_paths = tmp_paths->next;
+	// }
 }

@@ -33,7 +33,6 @@ void parse_ants(char *line, t_data *data)
 		if (ants <= 0)
 			error("ants", data, line);
 		data->ants = ants;
-		// ft_putendlnbr("data->ants ", data->ants);
 	}
 	else
 		error("ants", data, line);

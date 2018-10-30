@@ -23,19 +23,15 @@ t_bool is_room(const char *line)
 	room = ft_strsplit(line, ' ');
 	if (!ft_is_num(room[1]))
 	{
-		ft_putendl("about to free matrix not num room 1");
 		ft_free_matrix(room);
 		return (FALSE);
 	}
 	if (!ft_is_num(room[2]))
 	{
-		ft_putendl("about to free matrix not num room 2");
 		ft_free_matrix(room);
 		return (FALSE);
 	}
-	ft_putendl("about to free matrix is room");
 	ft_free_matrix(room);
-	ft_putendl("free matrix done is room");
 	return (TRUE);
 }
 
@@ -63,7 +59,6 @@ t_qv *add_room_to_list(t_qv *rooms, t_room *room)
 	tmp_list = rooms;
 	if (!rooms)
 	{
-		ft_putendl("no rooms list making new one");
 		rooms = malloc(sizeof(t_qv));
 		rooms->room = room;
 		rooms->prev = NULL;
@@ -72,16 +67,8 @@ t_qv *add_room_to_list(t_qv *rooms, t_room *room)
 	}
 	else
 	{
-		ft_putendl("adding to end of rooms list");
-		if (!room)
-			ft_putendl("room is null baby");
 		while (tmp_list->next)
-		{
-			ft_putendl(tmp_list->room->name);
 			tmp_list = tmp_list->next;
-		}
-		ft_putendl(tmp_list->room->name);
-		ft_putendl("at end of rooms list");
 		tmp_list->next = malloc(sizeof(t_qv));
 		tmp_list->next->room = room;
 		tmp_list->next->prev = NULL;
@@ -113,30 +100,18 @@ void room_parse(t_parse *p, t_data *data)
 	t_bool end;
 
 	start = FALSE;
-	ft_putendl("about to str split");
-	ft_putstr("p->line: ");
-	ft_putendl(p->line);
 	s_room = ft_strsplit(p->line, ' ');
-	ft_putendl("str split done");
 	if (p->start_found && !data->start)
 	{
 		start = TRUE;
 		data->start = ft_strdup(s_room[0]);
-		ft_putendl(data->start);
 	}
 	if (p->end_found && !data->end)
 	{
 		end = TRUE;
 		data->end = ft_strdup(s_room[0]);
-		ft_putendl(data->end);
 	}
-	// ft_putendl("about to insert to ht");
-	// ht_insert(data->map, s_room[0], setup_room(s_room[0], start, end));
-	// ft_putendl("about to free s_room");
-	// ft_putendl("5");
-	ft_putendl("about to insert to room list");
 	data->rooms = add_room_to_list(data->rooms, setup_room(s_room[0], start, end));
-	ft_putendl("after insert room list");
 	ft_free_matrix(s_room);
 	p->rooms++;
 }
