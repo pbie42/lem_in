@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   links.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:37 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/29 23:29:59 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 20:00:28 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,20 @@ t_bool check_links(t_link *start, char *key)
 	return (FALSE);
 }
 
+void handle_link(t_room *for_new, t_room *for_end)
+{
+	t_link *new_link;
+
+	new_link = l_new(for_new->name);
+	if (!check_links(for_end->link, new_link->key))
+		l_add_end(for_end, new_link);
+	else
+	{
+		free(new_link->key);
+		free(new_link);
+	}
+}
+
 void link_parse(t_parse *p, t_data *data)
 {
 	char **link;
@@ -59,35 +73,15 @@ void link_parse(t_parse *p, t_data *data)
 	t_room *linked_room;
 	t_link *new_link;
 
-	room = NULL;
-	linked_room = NULL;
-	new_link = NULL;
 	link = ft_strsplit(p->line, '-');
-	// room = ht_search(data->map, link[0]);
 	room = find_room(data->rooms, link[0]);
-	// linked_room = ht_search(data->map, link[1]);
 	linked_room = find_room(data->rooms, link[1]);
 	if (!room || !linked_room)
 	{
 		ft_free_matrix(link);
-		return;
+		return ;
 	}
-	new_link = l_new(linked_room->name);
-	if (!check_links(room->link, new_link->key))
-		l_add_end(room, new_link);
-	else
-	{
-		free(new_link->key);
-		free(new_link);
-	}
-	new_link = NULL;
-	new_link = l_new(room->name);
-	if (!check_links(linked_room->link, new_link->key))
-		l_add_end(linked_room, new_link);
-	else
-	{
-		free(new_link->key);
-		free(new_link);
-	}
+	handle_link(linked_room, room);
+	handle_link(room, linked_room);
 	ft_free_matrix(link);
 }
