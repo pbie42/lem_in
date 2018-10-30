@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/28 17:40:24 by pbie             ###   ########.fr       */
+/*   Updated: 2018/10/30 18:58:04 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_data *setup_data(void)
 	data->num_rooms = 0;
 	data->start = NULL;
 	data->end = NULL;
-	data->map = NULL;
 	data->paths = NULL;
 	data->rooms = NULL;
 	return (data);
@@ -70,7 +69,6 @@ void free_data(t_data *data)
 int main(void)
 {
 	t_data *data;
-	t_h_table *ht;
 	t_room *tmp_room;
 
 	data = NULL;

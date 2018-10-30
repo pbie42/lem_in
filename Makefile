@@ -6,7 +6,7 @@
 #    By: paul <paul@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/27 13:45:50 by pbie              #+#    #+#              #
-#    Updated: 2018/10/30 18:26:26 by paul             ###   ########.fr        #
+#    Updated: 2018/10/30 18:58:21 by paul             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,6 @@ SRC = main.c \
 		src/bfs/list/list_length.c \
 		src/bfs/list/new_link.c \
 		src/bfs/bfs.c \
-		src/hash_table/ht_free.c \
-		src/hash_table/ht_hash.c \
-		src/hash_table/ht_new.c \
-		src/hash_table/ht_resize.c \
 		src/parser/ants.c \
 		src/parser/commands.c \
 		src/parser/comments.c \

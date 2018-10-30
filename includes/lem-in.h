@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 18:26:04 by paul             ###   ########.fr       */
+/*   Updated: 2018/10/30 18:57:40 by paul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,20 +117,6 @@ typedef struct s_bfs
 	t_link *links;
 } t_bfs;
 
-typedef struct s_h_item
-{
-	char *key;
-	t_room *value;
-} t_h_item;
-
-typedef struct s_h_table
-{
-	int size;
-	int base_size;
-	int count;
-	t_h_item **items;
-} t_h_table;
-
 typedef struct s_data
 {
 	int ants;
@@ -140,7 +126,6 @@ typedef struct s_data
 	char *start;
 	char *end;
 	t_ants_list *moved;
-	t_h_table *map;
 	t_paths *paths;
 	t_qv *rooms;
 } t_data;
@@ -182,11 +167,7 @@ t_bool is_comment(char *line);
 t_bool is_link(char *line);
 t_bool is_room(const char *line);
 t_bool move_ants(t_qv *path, t_data *data);
-t_h_item *ht_new_item(const char *k, t_room *v);
-t_h_table *ht_new(void);
-t_h_table *ht_new_sized(const int base_size);
 t_link *l_new(char *key);
-t_room *ht_search(t_h_table *ht, const char *key);
 t_room *find_room(t_qv *rooms, char *key);
 t_qv *add_to_start(t_qv *head, t_qv *new_link);
 t_qv *new_link(t_room *room, int level);
@@ -198,11 +179,6 @@ void error_empty();
 void ft_free_matrix(char **matrix);
 void handle_move(t_move *m, t_data *data);
 void handle_start(t_move *m, t_data *data);
-void ht_free_hash_table(t_h_table *ht);
-void ht_free_item(t_h_item *i);
-void ht_insert(t_h_table *ht, const char *key, t_room *value);
-void ht_resize(t_h_table *ht, const int base_size);
-void ht_resize_up(t_h_table *ht);
 void l_add_end(t_room *room, t_link *new_link);
 void l_free(t_link *start);
 void link_parse(t_parse *p, t_data *data);
