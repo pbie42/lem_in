@@ -6,11 +6,11 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:41 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/28 16:48:43 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 
 t_bool is_ants(char *line, t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 13:27:46 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/08 11:53:31 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 
 void			l_add_end(t_room *room, t_link *new_link)
 {

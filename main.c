@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 18:58:04 by paul             ###   ########.fr       */
+/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 
 t_data *setup_data(void)
 {
@@ -31,7 +31,7 @@ t_data *setup_data(void)
 
 void free_data(t_data *data)
 {
-	t_ants_list *tmp_ant_list;
+	t_a_list *tmp_ant_list;
 	t_qv *tmp_qv;
 	t_paths *tmp_path;
 	t_qv *tmp_rooms;
