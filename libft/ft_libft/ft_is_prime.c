@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 21:34:19 by paul              #+#    #+#             */
-/*   Updated: 2018/10/30 21:34:39 by paul             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:33:50 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int ft_is_prime(const int x)
+int	ft_is_prime(const int x)
 {
 	int i;
 

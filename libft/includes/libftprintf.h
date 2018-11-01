@@ -6,7 +6,7 @@
 /*   By: paul <paul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:25:33 by pbie              #+#    #+#             */
-/*   Updated: 2018/10/30 21:37:40 by paul             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:34:39 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,10 +277,10 @@ int					ft_next_prime(int x);
 int					ft_is_prime(const int x);
 char				*oct_malloc(char *str);
 char				*oct_change(t_pf_item *pfi, intmax_t n);
-double	ft_floor(double x);
-t_bool		ft_is_num(const char *string);
-t_bool	ft_only_white(char *s);
-long int	ft_pow(int x, int n);
-double	ft_sqroot(double square);
+double				ft_floor(double x);
+t_bool				ft_is_num(const char *string);
+t_bool				ft_only_white(char *s);
+long int			ft_pow(int x, int n);
+double				ft_sqroot(double square);
 
 #endif

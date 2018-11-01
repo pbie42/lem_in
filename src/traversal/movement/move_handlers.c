@@ -6,15 +6,15 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:19:34 by paul              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:54:29 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static t_ant *new_ant(t_data *data)
+static t_ant	*new_ant(t_data *data)
 {
-	t_ant *new_ant;
+	t_ant		*new_ant;
 
 	new_ant = (t_ant *)malloc(sizeof(t_ant));
 	if (!new_ant)
@@ -24,9 +24,9 @@ static t_ant *new_ant(t_data *data)
 	return (new_ant);
 }
 
-static void handle_end(t_move *m, t_data *data)
+static void		handle_end(t_move *m, t_data *data)
 {
-	int ant_num;
+	int			ant_num;
 
 	ant_num = m->tmp_path->room->ant->num;
 	m->tmp_path->prev->room->ant = NULL;
@@ -37,7 +37,7 @@ static void handle_end(t_move *m, t_data *data)
 	data->end_ants++;
 }
 
-static void handle_regular(t_move *m)
+static void		handle_regular(t_move *m)
 {
 	m->tmp_path->prev->room->ant = m->tmp_path->room->ant;
 	m->tmp_path->prev->room->occupied = TRUE;
@@ -45,9 +45,9 @@ static void handle_regular(t_move *m)
 	m->tmp_path->room->occupied = FALSE;
 }
 
-void handle_start(t_move *m, t_data *data)
+void			handle_start(t_move *m, t_data *data)
 {
-	t_room *prev_room;
+	t_room		*prev_room;
 
 	prev_room = m->tmp_path->prev->room;
 	prev_room->ant = new_ant(data);
@@ -60,9 +60,9 @@ void handle_start(t_move *m, t_data *data)
 	m->print_space++;
 }
 
-void handle_move(t_move *m, t_data *data)
+void			handle_move(t_move *m, t_data *data)
 {
-	int ant_num;
+	int			ant_num;
 
 	data->moved = add_to_moved(data->moved, m->tmp_path->room->ant, data);
 	if (m->print_space != 0)

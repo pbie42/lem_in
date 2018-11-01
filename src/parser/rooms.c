@@ -6,15 +6,15 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:40 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:47:47 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_bool is_room(const char *line)
+t_bool		is_room(const char *line)
 {
-	char **room;
+	char	**room;
 
 	if (line[0] == 'L')
 		return (FALSE);
@@ -35,9 +35,9 @@ t_bool is_room(const char *line)
 	return (TRUE);
 }
 
-t_room *setup_room(char *name, t_bool start_done, t_bool end_done)
+t_room		*setup_room(char *name, t_bool start_done, t_bool end_done)
 {
-	t_room *room;
+	t_room	*room;
 
 	room = (t_room *)malloc(sizeof(t_room));
 	room->name = ft_strdup(name);
@@ -52,9 +52,9 @@ t_room *setup_room(char *name, t_bool start_done, t_bool end_done)
 	return (room);
 }
 
-t_qv *add_room_to_list(t_qv *rooms, t_room *room)
+t_qv		*add_room_to_list(t_qv *rooms, t_room *room)
 {
-	t_qv *tmp_list;
+	t_qv	*tmp_list;
 
 	tmp_list = rooms;
 	if (!rooms)
@@ -79,9 +79,9 @@ t_qv *add_room_to_list(t_qv *rooms, t_room *room)
 	return (rooms);
 }
 
-t_room *find_room(t_qv *rooms, char *key)
+t_room		*find_room(t_qv *rooms, char *key)
 {
-	t_qv *tmp_list;
+	t_qv	*tmp_list;
 
 	tmp_list = rooms;
 	while (tmp_list)
@@ -93,12 +93,12 @@ t_room *find_room(t_qv *rooms, char *key)
 	return (NULL);
 }
 
-void room_parse(t_parse *p, t_data *data)
+void		room_parse(t_parse *p, t_data *data)
 {
-	char **s_room;
-	t_room *room;
-	t_bool start;
-	t_bool end;
+	char	**s_room;
+	t_room	*room;
+	t_bool	start;
+	t_bool	end;
 
 	start = FALSE;
 	end = FALSE;

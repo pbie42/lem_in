@@ -6,13 +6,13 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:17:38 by paul              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:51:55 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static t_bool can_move(t_qv *tmp_path, t_data *data)
+static t_bool	can_move(t_qv *tmp_path, t_data *data)
 {
 	if ((tmp_path->room->occupied ||
 		!ft_strcmp(tmp_path->room->name, data->start) ||
@@ -23,9 +23,9 @@ static t_bool can_move(t_qv *tmp_path, t_data *data)
 	return (FALSE);
 }
 
-static t_move *setup_move(t_qv *path)
+static t_move	*setup_move(t_qv *path)
 {
-	t_move *m;
+	t_move		*m;
 
 	m = malloc(sizeof(t_move));
 	m->tmp_path = path;
@@ -34,10 +34,10 @@ static t_move *setup_move(t_qv *path)
 	return (m);
 }
 
-t_bool move_ants(t_qv *path, t_data *data)
+t_bool			move_ants(t_qv *path, t_data *data)
 {
-	t_move *m;
-	t_bool moved;
+	t_move		*m;
+	t_bool		moved;
 
 	m = setup_move(path);
 	while (m->tmp_path)

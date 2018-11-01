@@ -6,15 +6,15 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:40:56 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_data *setup_data(void)
+t_data			*setup_data(void)
 {
-	t_data *data;
+	t_data		*data;
 
 	data = malloc(sizeof(t_data));
 	data->ants = 0;
@@ -29,12 +29,9 @@ t_data *setup_data(void)
 	return (data);
 }
 
-void free_data(t_data *data)
+void			free_rooms(t_data *data)
 {
-	t_a_list *tmp_ant_list;
-	t_qv *tmp_qv;
-	t_paths *tmp_path;
-	t_qv *tmp_rooms;
+	t_qv		*tmp_rooms;
 
 	while (data->rooms)
 	{
@@ -46,6 +43,15 @@ void free_data(t_data *data)
 		free(tmp_rooms);
 	}
 	free(data->rooms);
+}
+
+void			free_data(t_data *data)
+{
+	t_a_list	*tmp_ant_list;
+	t_qv		*tmp_qv;
+	t_paths		*tmp_path;
+
+	free_rooms(data);
 	if (data->start)
 		free(data->start);
 	if (data->end)
@@ -66,10 +72,10 @@ void free_data(t_data *data)
 	free(data);
 }
 
-int main(void)
+int				main(void)
 {
-	t_data *data;
-	t_room *tmp_room;
+	t_data		*data;
+	t_room		*tmp_room;
 
 	data = NULL;
 	data = setup_data();
@@ -80,9 +86,5 @@ int main(void)
 	construct_paths(find_room(data->rooms, data->end), data);
 	traversal(data);
 	free_data(data);
-	// while(1){
-	// 	;
-	// }
-
 	return (0);
 }

@@ -6,17 +6,17 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 14:03:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:42:05 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		list_length(t_qv *list)
+int			list_length(t_qv *list)
 {
-	int	i;
+	int		i;
 	t_qv	*tmp;
-	
+
 	tmp = list;
 	i = 0;
 	if (!list)

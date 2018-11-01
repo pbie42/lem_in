@@ -6,16 +6,16 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 21:59:23 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:50:36 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void free_print_path(t_qv *path)
+void		free_print_path(t_qv *path)
 {
-	t_qv *tmp;
-	t_qv *tmp2;
+	t_qv	*tmp;
+	t_qv	*tmp2;
 
 	tmp = path;
 	while (tmp)
@@ -26,19 +26,20 @@ void free_print_path(t_qv *path)
 	}
 }
 
-t_paths *new_path(t_qv *path)
+t_paths		*new_path(t_qv *path)
 {
-	t_paths *tmp;
+	t_paths	*tmp;
 
 	tmp = (t_paths *)malloc(sizeof(t_paths));
 	tmp->next = NULL;
 	tmp->path = path;
-	return tmp;
+	return (tmp);
 }
 
-t_paths *add_path(t_data *data, t_qv *path)
+t_paths		*add_path(t_data *data, t_qv *path)
 {
-	t_paths *tmp;
+	t_paths	*tmp;
+
 	if (!data->paths)
 		data->paths = new_path(path);
 	else
@@ -51,9 +52,9 @@ t_paths *add_path(t_data *data, t_qv *path)
 	return (data->paths);
 }
 
-void print_paths(t_paths *paths)
+void		print_paths(t_paths *paths)
 {
-	t_paths *tmp_paths;
+	t_paths	*tmp_paths;
 
 	tmp_paths = paths;
 	while (tmp_paths)
@@ -63,16 +64,15 @@ void print_paths(t_paths *paths)
 	}
 }
 
-void construct_paths(t_room *end, t_data *data)
+void		construct_paths(t_room *end, t_data *data)
 {
-	t_qv *path;
-	t_room *tmp_end;
-	t_room *parent;
+	t_qv	*path;
+	t_room	*tmp_end;
+	t_room	*parent;
 
 	tmp_end = end;
 	if (!end)
-		return;
-	int i = 0;
+		return ;
 	while (tmp_end->end_parent)
 	{
 		parent = tmp_end->end_parent;

@@ -6,15 +6,15 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:37 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:45:29 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_bool is_link(char *line)
+t_bool		is_link(char *line)
 {
-	char **link;
+	char	**link;
 
 	if (line[0] == 'L')
 		return (FALSE);
@@ -32,9 +32,9 @@ t_bool is_link(char *line)
 	return (TRUE);
 }
 
-t_bool check_links(t_link *start, char *key)
+t_bool		check_links(t_link *start, char *key)
 {
-	t_link *tmp;
+	t_link	*tmp;
 
 	tmp = start;
 	if (!start)
@@ -52,9 +52,9 @@ t_bool check_links(t_link *start, char *key)
 	return (FALSE);
 }
 
-void handle_link(t_room *for_new, t_room *for_end)
+void		handle_link(t_room *for_new, t_room *for_end)
 {
-	t_link *new_link;
+	t_link	*new_link;
 
 	new_link = l_new(for_new->name);
 	if (!check_links(for_end->link, new_link->key))
@@ -66,12 +66,12 @@ void handle_link(t_room *for_new, t_room *for_end)
 	}
 }
 
-void link_parse(t_parse *p, t_data *data)
+void		link_parse(t_parse *p, t_data *data)
 {
-	char **link;
-	t_room *room;
-	t_room *linked_room;
-	t_link *new_link;
+	char	**link;
+	t_room	*room;
+	t_room	*linked_room;
+	t_link	*new_link;
 
 	link = ft_strsplit(p->line, '-');
 	room = find_room(data->rooms, link[0]);

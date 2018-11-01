@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 19:06:59 by paul              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:43:07 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_qv		*remove_from_queue(t_qv *start)
 	}
 	start->room = NULL;
 	start->next = NULL;
-	free (start);
+	free(start);
 	return (NULL);
 }
 
@@ -48,7 +48,7 @@ void		add_to_q(t_qv *start, t_qv *new_link)
 	t_qv	*tmp;
 
 	tmp = start;
-	while(tmp->next)
+	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new_link;
 }

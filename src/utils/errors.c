@@ -6,19 +6,19 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 15:35:19 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:55:00 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void path_error(const char *msg, t_data *data, t_bfs *bfs)
+void	path_error(const char *msg, t_data *data, t_bfs *bfs)
 {
 	if (!ft_strcmp(msg, "end"))
 		ft_exit("Error Occured: No path from start to end rooms");
 }
 
-void empty_line(char *line)
+void	empty_line(char *line)
 {
 	if (ft_only_white(line))
 	{
@@ -28,7 +28,7 @@ void empty_line(char *line)
 	free(line);
 }
 
-void error(const char *msg, t_data *data, char *line)
+void	error(const char *msg, t_data *data, char *line)
 {
 	if (!ft_strcmp(msg, "empty"))
 		ft_exit("Error Occurred: Empty Map!");

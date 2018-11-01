@@ -6,17 +6,17 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:52:22 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void traversal(t_data *data)
+void		traversal(t_data *data)
 {
-	t_paths *tmp_paths;
-	int test;
-	t_bool moved;
+	t_paths	*tmp_paths;
+	int		test;
+	t_bool	moved;
 
 	while (data->end_ants < data->ants)
 	{

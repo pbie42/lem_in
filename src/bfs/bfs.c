@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 13:26:35 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:05:51 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 13:43:51 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		add_end_parent(t_bfs *bfs)
 {
-	t_room *tmp;
+	t_room		*tmp;
 
 	bfs->end_found = TRUE;
 	if (!bfs->tmp_room->end_parent)
@@ -31,16 +31,16 @@ static void		add_end_parent(t_bfs *bfs)
 		tmp = tmp->end_parent;
 }
 
-static void handle_add_q(t_bfs *bfs)
+static void		handle_add_q(t_bfs *bfs)
 {
 	bfs->tmp_room->visited = TRUE;
 	bfs->tmp_room->parent = bfs->s_que->room;
 	add_to_q(bfs->s_que, new_link(bfs->tmp_room, bfs->s_que->level + 1));
 }
 
-static t_bfs *setup_bfs(t_data *data)
+static t_bfs	*setup_bfs(t_data *data)
 {
-	t_bfs *bfs;
+	t_bfs		*bfs;
 
 	bfs = (t_bfs *)malloc(sizeof(t_bfs));
 	bfs->s_que = new_link(find_room(data->rooms, data->start), 0);
