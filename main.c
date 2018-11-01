@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 13:40:56 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 17:51:32 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ t_data			*setup_data(void)
 	data->moved = NULL;
 	data->end_ants = 0;
 	data->num_rooms = 0;
+	data->num_paths = 0;
+	data->extra_rooms = 0;
+	data->av_paths = 0;
 	data->start = NULL;
 	data->end = NULL;
 	data->paths = NULL;

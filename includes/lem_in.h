@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 12:06:56 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 17:51:25 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ typedef struct		s_a_list
 typedef struct		s_paths
 {
 	t_qv			*path;
+	int				len;
+	t_bool			use;
 	struct s_paths	*next;
 }					t_paths;
 
@@ -122,8 +124,12 @@ typedef struct		s_data
 {
 	int				ants;
 	int				ant_num;
+	int				ants_left;
 	int				end_ants;
 	int				num_rooms;
+	int				num_paths;
+	int				extra_rooms;
+	int				av_paths;
 	char			*start;
 	char			*end;
 	t_a_list		*moved;
@@ -149,7 +155,11 @@ typedef struct		s_move
 	t_bool			moved_an_ant;
 }					t_move;
 
+int					cnt_set_lens(t_paths *paths);
 int					list_length(t_qv *list);
+int					longest_len(t_paths *paths);
+int					paths_len(t_qv *path);
+int					shortest_len(t_paths *paths);
 t_a_list			*add_to_moved(t_a_list *moved, t_ant *ant, t_data *data);
 t_a_list			*remove_from_moved(t_a_list *moved, int ant_num);
 t_a_list			*clear_moved(t_a_list *moved, t_data *data);

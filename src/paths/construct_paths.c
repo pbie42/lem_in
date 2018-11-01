@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 21:59:23 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 13:50:36 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 17:22:23 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_paths		*new_path(t_qv *path)
 	t_paths	*tmp;
 
 	tmp = (t_paths *)malloc(sizeof(t_paths));
+	tmp->len = 0;
+	tmp->use = TRUE;
 	tmp->next = NULL;
 	tmp->path = path;
 	return (tmp);
@@ -87,5 +89,6 @@ void		construct_paths(t_room *end, t_data *data)
 		path = NULL;
 		tmp_end = tmp_end->end_parent;
 	}
+	print_paths(data->paths);
 	ft_putchar('\n');
 }

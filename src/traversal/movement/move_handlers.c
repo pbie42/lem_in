@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:19:34 by paul              #+#    #+#             */
-/*   Updated: 2018/11/01 13:54:29 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 16:45:14 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void		handle_end(t_move *m, t_data *data)
 	m->tmp_path->room->occupied = FALSE;
 	data->moved = remove_from_moved(data->moved, ant_num);
 	data->end_ants++;
+	data->ants_left--;
 }
 
 static void		handle_regular(t_move *m)

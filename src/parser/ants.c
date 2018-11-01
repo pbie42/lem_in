@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 18:35:41 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 13:44:46 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/01 16:40:10 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	parse_ants(char *line, t_data *data)
 		if (ants <= 0)
 			error("ants", data, line);
 		data->ants = ants;
+		data->ants_left = ants;
 	}
 	else
 		error("ants", data, line);
