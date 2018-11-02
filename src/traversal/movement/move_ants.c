@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:17:38 by paul              #+#    #+#             */
-/*   Updated: 2018/11/01 13:51:55 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/02 12:14:17 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_move	*setup_move(t_qv *path)
 	return (m);
 }
 
-t_bool			move_ants(t_qv *path, t_data *data)
+t_bool			move_ants(t_qv *path, t_data *data, t_bool use)
 {
 	t_move		*m;
 	t_bool		moved;
@@ -45,7 +45,7 @@ t_bool			move_ants(t_qv *path, t_data *data)
 		if (can_move(m->tmp_path, data))
 		{
 			if ((!ft_strcmp(m->tmp_path->room->name, data->start)) &&
-				data->ant_num <= data->ants)
+				data->ant_num <= data->ants && use)
 				handle_start(m, data);
 			else if (m->tmp_path->room->ant && !m->tmp_path->room->ant->moved)
 				handle_move(m, data);

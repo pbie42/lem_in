@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:16:39 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 17:52:48 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/02 12:14:42 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,18 @@ void		disable_longest(t_paths *paths)
 	longest->use = FALSE;
 }
 
+void		is_usable(t_data *data)
+{
+	if (data->num_paths > 1 && data->extra_rooms == data->ants_left)
+	{
+		// ft_putendl("extra == ants_left");
+		disable_longest(data->paths);
+		data->extra_rooms = extra_rooms(data->paths);
+		data->num_paths--;
+		// ft_putendlnbr("data->extra_rooms ", data->extra_rooms);
+	}
+}
+
 void		traversal(t_data *data)
 {
 	t_paths	*tmp_paths;
@@ -55,7 +67,10 @@ void		traversal(t_data *data)
 	data->num_paths = cnt_set_lens(data->paths);
 	data->av_paths = data->num_paths;
 	if (data->num_paths > 1)
+	{
 		data->extra_rooms = extra_rooms(data->paths);
+		// ft_putendlnbr("data->extra_rooms ", data->extra_rooms);
+	}
 	while (data->end_ants < data->ants)
 	{
 		tmp_paths = data->paths;
@@ -65,7 +80,9 @@ void		traversal(t_data *data)
 		{
 			if (print != 0 && moved)
 				ft_putchar(' ');
-			moved = move_ants(tmp_paths->path, data);
+			// is_usable(data);
+			// ft_putendlnbr("tmp_paths->use ", tmp_paths->use);
+			moved = move_ants(tmp_paths->path, data, tmp_paths->use);
 			tmp_paths = tmp_paths->next;
 			print++;
 		}

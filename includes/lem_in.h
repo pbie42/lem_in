@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 13:46:32 by pbie              #+#    #+#             */
-/*   Updated: 2018/11/01 17:51:25 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/02 11:37:32 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ t_bool				is_command(const char *line);
 t_bool				is_comment(char *line);
 t_bool				is_link(char *line);
 t_bool				is_room(const char *line);
-t_bool				move_ants(t_qv *path, t_data *data);
+t_bool				move_ants(t_qv *path, t_data *data, t_bool use);
 t_link				*l_new(char *key);
 t_room				*find_room(t_qv *rooms, char *key);
 t_qv				*add_to_start(t_qv *head, t_qv *new_link);

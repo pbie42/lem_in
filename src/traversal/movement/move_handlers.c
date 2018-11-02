@@ -6,7 +6,7 @@
 /*   By: pbie <pbie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 18:19:34 by paul              #+#    #+#             */
-/*   Updated: 2018/11/01 16:45:14 by pbie             ###   ########.fr       */
+/*   Updated: 2018/11/02 12:14:30 by pbie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_ant	*new_ant(t_data *data)
 		ft_exit("Malloc fucking failed");
 	new_ant->moved = TRUE;
 	new_ant->num = data->ant_num++;
+	data->ants_left--;
 	return (new_ant);
 }
 
@@ -35,7 +36,6 @@ static void		handle_end(t_move *m, t_data *data)
 	m->tmp_path->room->occupied = FALSE;
 	data->moved = remove_from_moved(data->moved, ant_num);
 	data->end_ants++;
-	data->ants_left--;
 }
 
 static void		handle_regular(t_move *m)
